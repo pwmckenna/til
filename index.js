@@ -9,6 +9,9 @@ $(document).ready(function() {
   function emoji (text) {
     return emojiParser(text, 'bower_components/emoji-parser/emoji');
   }
+  function convertToSlug (text) {
+    return text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+  }
   Q.fcall(function () {
     return $.get('templates/tid.handlebars');
   }).then(function (resp) {
@@ -25,7 +28,7 @@ $(document).ready(function() {
     }).then(function (tils) {
       var sortedTils = _.sortBy(tils, '-created_at');
       sortedTils.forEach(function (til) {
-        var id = 'til-' + til.id;
+        var id = 'til-' + convertToSlug(til.title);
         $('#til').append(template({
           id: id,
           title: til.title,
