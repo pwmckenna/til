@@ -24,7 +24,14 @@
     <div id="{{id}}" class="til">
       <div class="row text-center til-header">
         <h1>{{title}}</h1>
-        <a href="#{{id}}"><span class="text-muted">{{date}}</span></a>
+        <a href="{{user.html_url}}">
+          <span class="text-muted">{{user.login}}</span>
+        </a>
+        &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
+        <a href="{{issue}}">
+          <span class="text-muted">{{date}}</span>
+        </a>
+
         <div style="padding-top:15px">
         {{#each labels}}
           <span class="badge" style="background-color: #{{color}};">
@@ -56,7 +63,9 @@
           title: res[i].title,
           body: marked(res[i].body),
           date: moment(res[i].created_at).format('MMMM Do YYYY'),
-          labels: res[i].labels
+          labels: res[i].labels,
+          user: res[i].user,
+          issue: res[i].html_url
         }));
       }
     });
