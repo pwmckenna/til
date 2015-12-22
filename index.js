@@ -22,15 +22,16 @@ $(document).ready(function() {
     }).then(function (tils) {
       var sortedTils = _.sortBy(tils, '-created_at');
       sortedTils.forEach(function (til) {
+        var id = 'til-' + til.id;
         $('#til').append(template({
-          id: 'til-' + til.id,
+          id: id,
           title: til.title,
           body: marked(til.body),
           date: moment(til.created_at).format('MMMM Do YYYY'),
           labels: til.labels,
           user: til.user,
           issue: til.html_url,
-          href: encodeURIComponent(window.location.origin + window.location.pathname + window.location.search + '#' + til.id)
+          href: encodeURIComponent(window.location.origin + window.location.pathname + window.location.search + '#' + id)
         }));
       });
     }).finally(function () {
