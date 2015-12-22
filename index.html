@@ -48,7 +48,8 @@
           id: 'til-' + res[i].id,
           title: res[i].title,
           body: marked(res[i].body),
-          date: moment(res[i].created_at).format('MMMM Do YYYY')
+          date: moment(res[i].created_at).format('MMMM Do YYYY'),
+          labels: res[i].labels
         }));
       }
     });
