@@ -1,6 +1,11 @@
-<div id="{{id}}" class="til">
+<div class="til">
   <div class="row text-center til-header">
-    <h1>{{title}}</h1>
+    <h1 id="{{id}}">
+      <a href="#{{id}}" class="header-link">
+        <small><i class="glyphicon glyphicon-link"></i></small>
+      </a>
+      {{title}}
+    </h1>
     <a href="{{user.html_url}}">
       <span class="text-muted">{{user.login}}</span>
     </a>

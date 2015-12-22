@@ -6,6 +6,29 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Josefin Slab', serif;
 }
 
+.header-link {
+  position: relative;
+  left: -0.5em;
+  opacity: 0;
+}
+
+a i {
+  color: #ccc;
+}
+a:hover i {
+  color: #555;
+}
+
+h1:hover .header-link,
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
+  text-decoration: none;
+}
+
 p {
   font-size: 16px;
 }
