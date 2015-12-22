@@ -32,6 +32,10 @@ $(document).ready(function() {
           issue: til.html_url
         }));
       });
+    }).finally(function () {
+      if (window.location.hash) {
+        window.location = window.location.hash;
+      }
     });
   });
 });
