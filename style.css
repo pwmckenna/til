@@ -48,3 +48,8 @@ p {
 .til-header {
   padding-bottom: 20px;
 }
+
+.share img {
+  width: 20px;
+  height: 20px;
+}

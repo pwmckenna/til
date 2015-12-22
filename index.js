@@ -29,7 +29,8 @@ $(document).ready(function() {
           date: moment(til.created_at).format('MMMM Do YYYY'),
           labels: til.labels,
           user: til.user,
-          issue: til.html_url
+          issue: til.html_url,
+          href: encodeURIComponent(window.location.origin + window.location.pathname + window.location.search + '#' + til.id)
         }));
       });
     }).finally(function () {

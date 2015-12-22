@@ -1,11 +1,22 @@
 <div class="til">
+
+  {{!-- {{show header}} --}}
+
   <div class="row text-center til-header">
+
+    {{!-- {{show title along with the hover anchor tag}} --}}
+
     <h1 id="{{id}}">
       <a href="#{{id}}" class="header-link">
         <small><i class="glyphicon glyphicon-link"></i></small>
       </a>
       {{title}}
     </h1>
+
+
+
+    {{!-- {{show author and date}} --}}
+
     <a href="{{user.html_url}}">
       <span class="text-muted">{{user.login}}</span>
     </a>
@@ -13,6 +24,10 @@
     <a href="{{issue}}">
       <span class="text-muted">{{date}}</span>
     </a>
+
+
+
+    {{!-- {{show labels}} --}}
 
     <div style="padding-top:15px">
     {{#each labels}}
@@ -22,10 +37,17 @@
     {{/each}}
     </div>
   </div>
+
+
+  {{!-- {{show the post}} --}}
+
   <div class="row">
     {{{body}}}
   </div>
-  <div class="row">
-  <span class="badge">{{comments.length}}</span>
+
+  <div class="row text-center">
+    <a class="share" href="https://twitter.com/share?url={{href}}">
+      <img src="img/twitter.png" />
+    </a>
   </div>
 </div>
