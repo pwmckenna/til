@@ -1,0 +1,23 @@
+body {
+  font-family: 'EB Garamond', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Slab', serif;
+}
+
+.container {
+  width: 600px;
+}
+#header {
+  padding: 30px;
+}
+.til {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-top: 1px solid #eee;
+}
+
+.til-header {
+  padding-bottom: 20px;
+}
