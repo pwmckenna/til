@@ -25,11 +25,11 @@
       <div class="row text-center til-header">
         <h1>{{title}}</h1>
         <a href="#{{id}}"><span class="text-muted">{{date}}</span></a>
-        <div>
+        <div style="padding:10px">
         {{#each labels}}
-          <div class="badge" style="background-color: #{{color}};">
+          <span class="badge" style="background-color: #{{color}};">
             {{name}}
-          </div>
+          </span>
         {{/each}}
         </div>
       </div>
