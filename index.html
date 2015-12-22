@@ -12,6 +12,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/q.js/0.9.2/q.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -19,57 +21,6 @@
   <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
   <link href='style.css' rel='stylesheet' type='text/css'>
-
-  <script id="til-template" type="text/x-handlebars-template">
-    <div id="{{id}}" class="til">
-      <div class="row text-center til-header">
-        <h1>{{title}}</h1>
-        <a href="{{user.html_url}}">
-          <span class="text-muted">{{user.login}}</span>
-        </a>
-        &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
-        <a href="{{issue}}">
-          <span class="text-muted">{{date}}</span>
-        </a>
-
-        <div style="padding-top:15px">
-        {{#each labels}}
-          <span class="badge" style="background-color: #{{color}};">
-            {{name}}
-          </span>
-        {{/each}}
-        </div>
-      </div>
-      <div class="row">
-        {{{body}}}
-      </div>
-    </div>
-  </script>
-
-  <script>
-    var repo = 'pwmckenna/til';
-
-    var template = Handlebars.compile($('#til-template').html());
-    marked.setOptions({
-      highlight: function (code) {
-        return hljs.highlightAuto(code).value;
-      }
-    });
-    $.ajax('https://api.github.com/repos/' + repo + '/issues').then(function (res) {
-      for (var i in res) {
-        console.log(res[i]);
-        $('#til').append(template({
-          id: 'til-' + res[i].id,
-          title: res[i].title,
-          body: marked(res[i].body),
-          date: moment(res[i].created_at).format('MMMM Do YYYY'),
-          labels: res[i].labels,
-          user: res[i].user,
-          issue: res[i].html_url
-        }));
-      }
-    });
-  </script>
 </head>
 <body>
   <a href="https://github.com/pwmckenna/til"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
@@ -80,5 +31,6 @@
     </div>
     <div id="til"></div>
   </div>
+  <script src="index.js"></script>
 </body>
 </html>
