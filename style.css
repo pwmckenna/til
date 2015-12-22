@@ -16,6 +16,7 @@ a i {
   color: #ccc;
   font-size: 16px;
 }
+
 a:hover i {
   color: #555;
 }
@@ -33,6 +34,7 @@ h6:hover .header-link {
 p {
   font-size: 16px;
 }
+
 .emoji {
   height: 16px;
   margin-top: -6px;
@@ -41,21 +43,22 @@ p {
 .container {
   width: 600px;
 }
+
 #header {
   padding: 30px;
 }
+
 .til {
   padding-top: 80px;
-  padding-bottom: 140px;
+  padding-bottom: 80px;
   border-top: 1px solid #eee;
 }
 
-.til-header {
-  padding-bottom: 20px;
+.til-header, .til-body, .til-footer {
+  padding: 30px;
 }
 
 .share img {
-  margin-top: 20px;
   width: 24px;
   height: 24px;
 }
