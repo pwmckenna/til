@@ -32,6 +32,10 @@ h6:hover .header-link {
 p {
   font-size: 16px;
 }
+.emoji {
+  height: 16px;
+  margin-top: -6px;
+}
 
 .container {
   width: 600px;

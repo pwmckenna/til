@@ -6,6 +6,9 @@ $(document).ready(function() {
       })
     }, Q.resolve());
   };
+  function emoji (text) {
+    return emojiParser(text, 'bower_components/emoji-parser/emoji');
+  }
   Q.fcall(function () {
     return $.get('templates/tid.handlebars');
   }).then(function (resp) {
@@ -26,7 +29,7 @@ $(document).ready(function() {
         $('#til').append(template({
           id: id,
           title: til.title,
-          body: marked(til.body),
+          body: emoji(marked(til.body)),
           date: moment(til.created_at).format('MMMM Do YYYY'),
           labels: til.labels,
           user: til.user,
