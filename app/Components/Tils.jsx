@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Til from './Til';
 
-export default class Tils extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div id="til">
-          {this.props.tils ? this.props.tils.map(til => <Til key={til.id} {...til} />) : null}
-        </div>
-      </div>
-   );
-  }
-}
+const Tils = props => (
+  <div className="container">
+    <div id="til">
+      {props.tils ? props.tils.map(til => <Til key={til.id} {...til} />) : null}
+    </div>
+  </div>
+);
 
 Tils.propTypes = {
-  tils: React.PropTypes.arrayOf(React.PropTypes.object)
+  tils: PropTypes.arrayOf(React.PropTypes.shape(Til.propTypes))
 };
+
+export default Tils;

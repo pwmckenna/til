@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+
+import Label from './Label';
 
 import markdown from '../utils/markdown';
 import emoji from '../utils/emoji';
@@ -63,17 +65,7 @@ export default class Til extends Component {
                 paddingTop: '15px'
               }}
             >
-            {this.props.labels.map(label => (
-              <span
-                key={label.name}
-                className="badge"
-                style={{
-                  backgroundColor: '#{label.color}'
-                }}
-              >
-                {label.name}
-              </span>
-            ))}
+            {this.props.labels.map(label => <Label key={label.name} {...label} />)}
             </div>
           </div>
         </div>
@@ -84,7 +76,12 @@ export default class Til extends Component {
 
         <div className="til-footer">
           <div className="row text-center">
-            <a target="_blank" className="share" onClick={this.handleShare.bind(this)} href="https://twitter.com/share?url={this.getHref()}">
+            <a
+              target="_blank"
+              className="share"
+              onClick={this.handleShare.bind(this)}
+              href={`https://twitter.com/share?url=${this.getHref()}`}
+            >
               <img src="img/twitter.png" />
             </a>
           </div>
@@ -95,9 +92,9 @@ export default class Til extends Component {
 }
 
 Til.propTypes = {
-  created_at: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  user: React.PropTypes.object.isRequired,
-  labels: React.PropTypes.array.isRequired,
-  body: React.PropTypes.string.isRequired
+  body: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  labels: PropTypes.arrayOf(PropTypes.shape(Label.propTypes)).isRequired,
+  title: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired
 };
