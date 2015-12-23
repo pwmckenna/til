@@ -24,13 +24,19 @@
     {{!-- {{show author and date}} --}}
 
     <div class="row text-center">
-      <a href="{{user.html_url}}">
-        <span class="text-muted">{{user.login}}</span>
-      </a>
-      &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
-      <a href="{{issue}}">
-        <span class="text-muted">{{date}}</span>
-      </a>
+      <div class="col-xs-5">
+        <a class="pull-right" href="{{user.html_url}}">
+          <span class="text-muted">{{user.login}}</span>
+        </a>
+      </div>
+      <div class="col-xs-2">
+        &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
+      </div>
+      <div class="col-xs-5">
+        <a class="pull-left" href="{{issue}}">
+          <span class="text-muted">{{date}}</span>
+        </a>
+      </div>
     </div>
 
 
