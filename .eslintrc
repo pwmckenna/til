@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": [2, "never"]
+  },
+  "globals": {
+    "hljs": true,
+    "marked": true,
+    "emojiParser": true,
+    "$": true,
+    "_": true,
+    "moment": true
+  }
+}

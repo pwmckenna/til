@@ -11,14 +11,12 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.json']
   },
   debug: true,
+  devtool: 'source-map',
   module: {
     noParse: /highlight\.js\/lib\/languages\/.*\.js/,
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel'
-    }, {
-      test: /\.handlebars$/,
-      loader: 'handlebars'
     }, {
       test: /\.css$/,
       loader: 'style!css'

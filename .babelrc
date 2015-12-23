@@ -1,3 +1,17 @@
 {
-  "presets": ["es2015", "react"]
+  "presets": ["react", "es2015"],
+  "env": {
+    // this plugin will be included only in development mode, e.g.
+    // if NODE_ENV (or BABEL_ENV) environment variable is not set
+    // or is equal to "development"
+    "development": {
+      "plugins": [
+        // must be an array with options object as second item
+        ["react-transform", {
+          // must be an array of objects
+          "transforms": []
+        }]
+      ]
+    }
+  }
 }
