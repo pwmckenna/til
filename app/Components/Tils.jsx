@@ -7,7 +7,7 @@ export default class Tils extends Component {
     return (
       <div className="container">
         <div id="til">
-          {this.props.tils ? this.props.tils.map(til => <Til {...til} />) : null}
+          {this.props.tils ? this.props.tils.map(til => <Til key={til.id} {...til} />) : null}
         </div>
       </div>
    );
