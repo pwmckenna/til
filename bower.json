@@ -1,0 +1,22 @@
+{
+  "name": "pwmckenna.github.io",
+  "directory": "build/vendor/",
+  "description": "Things I Learned",
+  "main": "webpack.config.js",
+  "authors": [
+    "Patrick Williams <pwmckenna@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/pwmckenna/til",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "build/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "emoji-parser": "~0.1.1"
+  }
+}
