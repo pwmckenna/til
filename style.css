@@ -41,7 +41,7 @@ p {
 }
 
 .container {
-  width: 600px;
+  max-width: 600px;
 }
 
 #header {
@@ -55,8 +55,7 @@ p {
 }
 
 .til-header, .til-body, .til-footer {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px;
 }
 
 .share img {
