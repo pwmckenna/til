@@ -1,53 +1,72 @@
 <div id="{{anchor}}" class="til">
 
+
+
   {{!-- {{show header}} --}}
 
-  <div class="row text-center til-header">
+  <div class="til-header">
+
+
 
     {{!-- {{show title along with the hover anchor tag}} --}}
 
-    <h1>
-      <a href="#{{anchor}}" class="header-link">
-        <small><i class="glyphicon glyphicon-link"></i></small>
-      </a>
-      {{title}}
-    </h1>
+    <div class="row text-center">
+      <h1>
+        <a href="#{{anchor}}" class="header-link">
+          <small><i class="glyphicon glyphicon-link"></i></small>
+        </a>
+        {{title}}
+      </h1>
+    </div>
 
 
 
     {{!-- {{show author and date}} --}}
 
-    <a href="{{user.html_url}}">
-      <span class="text-muted">{{user.login}}</span>
-    </a>
-    &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
-    <a href="{{issue}}">
-      <span class="text-muted">{{date}}</span>
-    </a>
+    <div class="row text-center">
+      <a href="{{user.html_url}}">
+        <span class="text-muted">{{user.login}}</span>
+      </a>
+      &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
+      <a href="{{issue}}">
+        <span class="text-muted">{{date}}</span>
+      </a>
+    </div>
 
 
 
     {{!-- {{show labels}} --}}
 
-    <div style="padding-top:15px">
-    {{#each labels}}
-      <span class="badge" style="background-color: #{{color}};">
-        {{name}}
-      </span>
-    {{/each}}
+    <div class="row text-center">
+      <div style="padding-top:15px">
+      {{#each labels}}
+        <span class="badge" style="background-color: #{{color}};">
+          {{name}}
+        </span>
+      {{/each}}
+      </div>
     </div>
   </div>
 
 
+
   {{!-- {{show the post}} --}}
 
-  <div class="row til-body">
-    {{{body}}}
+  <div class="til-body">
+    <div class="row">
+      {{{body}}}
+    </div>
   </div>
 
-  <div class="row text-center til-footer">
-    <a target="_blank" class="share" href="https://twitter.com/share?url={{href}}">
-      <img src="img/twitter.png" />
-    </a>
+
+
+  {{!-- {{show twitter share button}} --}}
+
+  <div class="til-footer">
+    <div class="row text-center">
+      <a target="_blank" class="share" href="https://twitter.com/share?url={{href}}">
+        <img src="img/twitter.png" />
+      </a>
+    </div>
   </div>
 </div>
