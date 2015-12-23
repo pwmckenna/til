@@ -19,7 +19,8 @@ export default class Til extends Component {
   getHref() {
     return window.location.origin + window.location.pathname + window.location.search + '#' + this.getAnchor();
   }
-  handleShare() {
+  handleShare(e) {
+    e.preventDefault();
     tweet(this.getHref(), 'TIL ' + this.props.title);
   }
   render() {
