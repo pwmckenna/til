@@ -7,7 +7,7 @@ const Label = (props) => (
     key={props.name}
     className="badge label"
     style={{
-      backgroundColor: '#{props.color}'
+      backgroundColor: '#' + props.color
     }}
   >
     {props.name}
