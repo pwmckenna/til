@@ -5,7 +5,7 @@ import './Label.less';
 const Label = (props) => (
   <span
     key={props.name}
-    className="badge"
+    className="badge label"
     style={{
       backgroundColor: '#{props.color}'
     }}

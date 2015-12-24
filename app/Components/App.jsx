@@ -27,7 +27,7 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="app">
         <Header />
         {this.state.tils ?
             this.state.tils.map(til => (

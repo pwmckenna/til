@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import moment from 'moment';
+
 import Label from './Label';
 import Twitter from './Twitter';
 
@@ -31,8 +33,7 @@ export default class Til extends Component {
                 <small><i className="glyphicon glyphicon-link"></i></small>
               </a>
               {this.props.title}
-              <a
-                className="header-link"
+              <a className="header-link"
                 style={{
                   opacity: 0
                 }}
@@ -58,25 +59,15 @@ export default class Til extends Component {
             </div>
           </div>
 
-          <div className="row text-center">
-            <div
-              style={{
-                paddingTop: '15px'
-              }}
-            >
+          <div className="row text-center labels">
             {this.props.labels.map(label => <Label key={label.name} {...label} />)}
-            </div>
           </div>
         </div>
 
-        <div className="til-body">
-          <div className="row" dangerouslySetInnerHTML={{ __html: emoji(markdown(this.props.body)) }} />
-        </div>
+        <div className="til-body row" dangerouslySetInnerHTML={{ __html: emoji(markdown(this.props.body)) }} />
 
-        <div className="til-footer">
-          <div className="row text-center">
-            <Twitter url={this.getHref()} text={'TIL ' + this.props.title} />
-          </div>
+        <div className="row text-center til-footer">
+          <Twitter url={this.getHref()} text={'TIL ' + this.props.title} />
         </div>
       </div>
     );

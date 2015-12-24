@@ -5,7 +5,6 @@
   },
   "globals": {
     "hljs": true,
-    "emojiParser": true,
-    "moment": true
+    "emojiParser": true
   }
 }
