@@ -3,9 +3,11 @@ import Q from 'q';
 
 import Header from './Header';
 import Footer from './Footer';
-import Tils from './Tils';
+import Til from './Til';
 
 import config from '../config';
+
+import './App.less';
 
 const fetch = () => Q.fcall(function fetchIssues() {
   return $.ajax('https://api.github.com/repos/' + config.repo + '/issues');
@@ -25,7 +27,11 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Tils tils={this.state.tils}/>
+        {this.state.tils ?
+            this.state.tils.map(til => (
+              <Til key={til.id} {...til} />
+            )) : null
+        }
         <Footer />
       </div>
     );

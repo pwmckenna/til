@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 
 import Label from './Label';
+import Twitter from './Twitter';
 
 import markdown from '../utils/markdown';
 import emoji from '../utils/emoji';
 import slug from '../utils/slug';
-import tweet from '../utils/tweet';
+
+import './Til.less';
 
 export default class Til extends Component {
   componentDidMount() {
@@ -18,10 +20,6 @@ export default class Til extends Component {
   }
   getHref() {
     return window.location.origin + window.location.pathname + window.location.search + '#' + this.getAnchor();
-  }
-  handleShare(e) {
-    e.preventDefault();
-    tweet(this.getHref(), 'TIL ' + this.props.title);
   }
   render() {
     return (
@@ -77,14 +75,7 @@ export default class Til extends Component {
 
         <div className="til-footer">
           <div className="row text-center">
-            <a
-              target="_blank"
-              className="share"
-              onClick={this.handleShare.bind(this)}
-              href={`https://twitter.com/share?url=${this.getHref()}`}
-            >
-              <img src="img/twitter.png" />
-            </a>
+            <Twitter url={this.getHref()} text={'TIL ' + this.props.title} />
           </div>
         </div>
       </div>

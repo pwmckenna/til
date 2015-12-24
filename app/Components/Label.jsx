@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import './Label.less';
+
 const Label = (props) => (
   <span
     key={props.name}
