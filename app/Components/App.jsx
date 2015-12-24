@@ -46,13 +46,15 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header title={config.title} img={this.state.img} />
-        {this.state.tils ?
-            this.state.tils.map(til => (
-              <Til key={til.id} {...til} />
-            )) : null
-        }
-        <Footer />
+        <div className="container">
+          <Header title={config.title} img={this.state.img} />
+          {this.state.tils ?
+              this.state.tils.map(til => (
+                <Til key={til.id} {...til} />
+              )) : null
+          }
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -12,11 +12,17 @@ export default () => (
       <img src="vendor/emoji-parser/emoji/evergreen_tree.png" />
     </h3>
     <div>
-      <a href={`https://github.com/${config.repo}/issues`}>Source</a>
+      <a href={`https://github.com/${config.repo}/issues`}>
+        <i className="fa fa-code-fork" />
+      </a>
       &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
-      <a href={`https://twitter.com/${config.twitter}`}>Twitter</a>
+      <a href={`https://twitter.com/${config.twitter}`}>
+        <i className="fa fa-twitter" />
+      </a>
       &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
-      <a href={`https://github.com/${config.github}`}>Github</a>
+      <a href={`https://github.com/${config.github}`}>
+        <i className="fa fa-github" />
+      </a>
     </div>
   </div>
 );
