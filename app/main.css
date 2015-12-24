@@ -9,6 +9,7 @@ h1, h2, h3, h4, h5, h6 {
 a i {
   color: #ccc;
   font-size: 16px;
+  padding: 10px;
 }
 
 a:hover i {
