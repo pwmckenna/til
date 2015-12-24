@@ -44,7 +44,7 @@ export default class Til extends Component {
 
           <div className="row text-center">
             <div className="col-xs-5">
-              <a className="pull-right" href="{this.props.user.html_url}">
+              <a className="pull-right" href={this.props.user.html_url}>
                 <span className="text-muted">{this.props.user.login}</span>
               </a>
             </div>
@@ -52,7 +52,7 @@ export default class Til extends Component {
               &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
             </div>
             <div className="col-xs-5">
-              <a className="pull-left" href="{this.props.html_url}">
+              <a className="pull-left" href={this.props.html_url}>
                 <span className="text-muted">{moment(this.props.created_at).format('MMMM Do YYYY')}</span>
               </a>
             </div>

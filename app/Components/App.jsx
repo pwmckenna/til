@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Q from 'q';
+import $ from 'jquery';
+import _ from 'lodash';
 
 import Header from './Header';
 import Footer from './Footer';

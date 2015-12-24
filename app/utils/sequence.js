@@ -5,5 +5,5 @@ export default (items, callback) => (
     return promise.then(function sequenceThen() {
       return callback(item);
     });
-  }, Q.resolve());
-)
+  }, Q.resolve())
+);
