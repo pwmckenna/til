@@ -8,7 +8,7 @@ export default () => (
   <div className="footer text-center">
     <h3>
       <img src="vendor/emoji-parser/emoji/evergreen_tree.png" />
-      Patrick Williams
+      {config.name}
       <img src="vendor/emoji-parser/emoji/evergreen_tree.png" />
     </h3>
     <div>

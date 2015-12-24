@@ -6,23 +6,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Josefin Slab', serif;
 }
 
-a i {
+a i.fa {
   color: #ccc;
   font-size: 16px;
   padding: 10px;
 }
 
-a:hover i {
+a:hover i.fa {
   color: #555;
-}
-
-p {
-  font-size: 16px;
-}
-
-.emoji {
-  height: 16px;
-  margin-top: -6px;
 }
 
 .container {

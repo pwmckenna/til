@@ -2,9 +2,9 @@ import React from 'react';
 
 import './Header.less';
 
-export default () => (
+export default props => (
   <div className="header">
-    <img src="img/fire64.png" className="img-circle center-block" />
-    <h3 className="text-center">til</h3>
+    <img src={props.img} className="img-circle center-block avatar" />
+    <h3 className="text-center">{props.title}</h3>
   </div>
 );
