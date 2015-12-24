@@ -23,11 +23,11 @@ export default class Til extends Component {
   }
   render() {
     return (
-      <div id="{this.getAnchor()}" className="til">
+      <div id={this.getAnchor()} className="til">
         <div className="til-header">
           <div className="row text-center">
             <h1>
-              <a href="#{this.getAnchor()}" className="header-link">
+              <a href={'#' + this.getAnchor()} className="header-link">
                 <small><i className="glyphicon glyphicon-link"></i></small>
               </a>
               {this.props.title}
