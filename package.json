@@ -8,6 +8,7 @@
     "react-dom": "^0.14.3"
   },
   "devDependencies": {
+    "babel-core": "^6.3.26",
     "babel-loader": "^6.2.0",
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-preset-es2015": "^6.3.13",
@@ -24,12 +25,14 @@
     "redbox-react": "^1.2.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^1.14.0",
+    "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
     "lint": "eslint app --ext .js --ext .jsx",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build",
-    "build": "NODE_ENV=production webpack -p",
+    "dev": "node server",
+    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
     "deploy": "npm run build && gh-pages -d build"
   },
   "repository": {
