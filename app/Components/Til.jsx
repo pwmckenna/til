@@ -11,7 +11,7 @@ import './Til.less';
 
 export default class Til extends Component {
   componentDidMount() {
-    if (window.location.hash === this.getAnchor()) {
+    if (window.location.hash === '#' + this.getAnchor()) {
       window.location = window.location.hash;
     }
   }

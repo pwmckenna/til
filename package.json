@@ -25,6 +25,7 @@
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
+    "rimraf": "^2.5.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
@@ -32,9 +33,10 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
+    "clean": "rimraf build/bundle.js build/bundle.js.map",
     "lint": "eslint app --ext .js --ext .jsx",
     "dev": "node server",
-    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "build": "npm run clean && NODE_ENV=production webpack -p --config webpack.production.config.js",
     "deploy": "npm run build && gh-pages -d build"
   },
   "repository": {
