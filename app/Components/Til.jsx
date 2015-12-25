@@ -6,9 +6,9 @@ import Label from './Label';
 import Comments from './Comments';
 import Markdown from './Markdown';
 import Dot from './Dot';
+import Title from './Title';
 
 import slug from '../utils/slug';
-import tweet from '../utils/tweet';
 
 import './Til.less';
 
@@ -24,33 +24,10 @@ export default class Til extends Component {
   getHref() {
     return window.location.origin + window.location.pathname + window.location.search + '#' + this.getAnchor();
   }
-  handleShare(e) {
-    e.preventDefault();
-    tweet(this.getHref(), this.props.title);
-  }
   render() {
     return (
       <li id={this.getAnchor()} className="til">
-        <div className="text-center title">
-          <h1>
-            <a
-              href={'#' + this.getAnchor()}
-              className="header-link"
-            >
-              <i className="fa fa-link"></i>
-            </a>
-            {this.props.title}
-
-            <a
-              target="_blank"
-              className="header-link"
-              onClick={this.handleShare.bind(this)}
-              href={`https://twitter.com/share?url=${this.getHref()}`}
-            >
-              <i className="fa fa-twitter" />
-            </a>
-          </h1>
-        </div>
+        <Title title={this.props.title} url={this.getHref()} />
 
         <div className="text-center info">
           <div className="col-xs-5">
