@@ -31,50 +31,50 @@ export default class Til extends Component {
   render() {
     return (
       <li id={this.getAnchor()} className="til">
-        <div className="til-header">
-          <div className="text-center">
-            <h1>
-              <a
-                href={'#' + this.getAnchor()}
-                className="header-link"
-              >
-                <i className="fa fa-link"></i>
-              </a>
-              {this.props.title}
+        <div className="text-center title">
+          <h1>
+            <a
+              href={'#' + this.getAnchor()}
+              className="header-link"
+            >
+              <i className="fa fa-link"></i>
+            </a>
+            {this.props.title}
 
-              <a
-                target="_blank"
-                className="header-link"
-                onClick={this.handleShare.bind(this)}
-                href={`https://twitter.com/share?url=${this.getHref()}`}
-              >
-                <i className="fa fa-twitter" />
-              </a>
-            </h1>
+            <a
+              target="_blank"
+              className="header-link"
+              onClick={this.handleShare.bind(this)}
+              href={`https://twitter.com/share?url=${this.getHref()}`}
+            >
+              <i className="fa fa-twitter" />
+            </a>
+          </h1>
+        </div>
+
+        <div className="text-center info">
+          <div className="col-xs-5">
+            <a className="pull-right" href={this.props.user.html_url}>
+              <span className="text-muted">{this.props.user.login}</span>
+            </a>
           </div>
-
-          <div className="text-center">
-            <div className="col-xs-5">
-              <a className="pull-right" href={this.props.user.html_url}>
-                <span className="text-muted">{this.props.user.login}</span>
-              </a>
-            </div>
-            <div className="col-xs-2 text-center">
-              <Dot />
-            </div>
-            <div className="col-xs-5">
-              <a className="pull-left" href={this.props.html_url}>
-                <span className="text-muted">{moment(this.props.created_at).format('MMMM Do YYYY')}</span>
-              </a>
-            </div>
+          <div className="col-xs-2 text-center">
+            <Dot />
           </div>
-
-          <div className="text-center labels">
-            {this.props.labels.map(label => <Label key={label.name} {...label} />)}
+          <div className="col-xs-5">
+            <a className="pull-left" href={this.props.html_url}>
+              <span className="text-muted">{moment(this.props.created_at).format('MMMM Do YYYY')}</span>
+            </a>
           </div>
         </div>
 
-        <Markdown className="til-body" markdown={this.props.body} />
+        {this.props.labels.length ? (
+          <div className="text-center labels">
+            {this.props.labels.map(label => <Label key={label.name} {...label} />)}
+          </div>
+        ) : null}
+
+        <Markdown className="body" markdown={this.props.body} />
 
         <Comments
           comments={this.props.comments}
