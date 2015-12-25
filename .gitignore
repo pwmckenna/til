@@ -1,3 +1,8 @@
-/node_modules
-/build/bundle.js
-/build/bundle.js.map
+node_modules
+build/bundle.js
+build/bundle.js.map
+build/*.eot
+build/*.woff
+build/*.woff2
+build/*.svg
+build/*.ttf
