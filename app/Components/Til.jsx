@@ -30,7 +30,7 @@ export default class Til extends Component {
   }
   render() {
     return (
-      <div id={this.getAnchor()} className="til">
+      <li id={this.getAnchor()} className="til">
         <div className="til-header">
           <div className="text-center">
             <h1>
@@ -80,7 +80,7 @@ export default class Til extends Component {
           comments={this.props.comments}
           html_url={this.props.html_url}
         />
-      </div>
+      </li>
     );
   }
 }

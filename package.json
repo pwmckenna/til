@@ -8,7 +8,8 @@
     "marked": "^0.3.5",
     "moment": "^2.10.6",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "react-spinkit": "^1.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",

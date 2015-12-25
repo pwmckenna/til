@@ -5,7 +5,8 @@ import _ from 'lodash';
 
 import Header from './Header';
 import Footer from './Footer';
-import Til from './Til';
+import Tils from './Tils';
+import Loader from './Loader';
 
 import config from '../config';
 
@@ -17,14 +18,13 @@ const fetchIssues = () => Q.fcall(() => (
 .then(tils => _.sortBy(tils, '-created_at'))
 .then(tils => Q.all(tils.map(til => (
   Q.fcall(() => (
-    Q(til.comments ? $.ajax(til.comments_url) : [])
+    Q.resolve(til.comments ? $.ajax(til.comments_url) : [])
   ))
   .then(comments => {
     til.comments = comments;
     return til;
   })
-))))
-.tap(console.log.bind(console));
+))));
 
 const fetchImage = () => Q.fcall(() => (
   $.ajax('https://api.github.com/users/' + config.github)
@@ -49,9 +49,10 @@ export default class App extends Component {
         <div className="container">
           <Header title={config.title} img={this.state.img} />
           {this.state.tils ?
-              this.state.tils.map(til => (
-                <Til key={til.id} {...til} />
-              )) : null
+              <Tils tils={this.state.tils} /> :
+              <div className="loader">
+                <Loader />
+              </div>
           }
           <Footer />
         </div>
