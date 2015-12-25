@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Dot from './Dot';
+
 import config from '../config';
 
 import './Footer.less';
@@ -15,11 +17,11 @@ export default () => (
       <a href={`https://github.com/${config.repo}/issues`}>
         <i className="fa fa-code-fork" />
       </a>
-      &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
+      <Dot className="dot" />
       <a href={`https://twitter.com/${config.twitter}`}>
         <i className="fa fa-twitter" />
       </a>
-      &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
+      <Dot className="dot" />
       <a href={`https://github.com/${config.github}`}>
         <i className="fa fa-github" />
       </a>

@@ -5,6 +5,7 @@ import moment from 'moment';
 import Label from './Label';
 import Comments from './Comments';
 import Markdown from './Markdown';
+import Dot from './Dot';
 
 import slug from '../utils/slug';
 import tweet from '../utils/tweet';
@@ -58,8 +59,8 @@ export default class Til extends Component {
                 <span className="text-muted">{this.props.user.login}</span>
               </a>
             </div>
-            <div className="col-xs-2">
-              &nbsp; &nbsp; &#8226; &nbsp; &nbsp;
+            <div className="col-xs-2 text-center">
+              <Dot />
             </div>
             <div className="col-xs-5">
               <a className="pull-left" href={this.props.html_url}>
