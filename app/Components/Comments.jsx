@@ -6,7 +6,7 @@ import './Comments.less';
 
 const Comments = props => (
   <div className="comments">
-    {props.comments.map(comment => <Comment {...comment} />)}
+    {props.comments.map(comment => <Comment key={comment.id} {...comment} />)}
     <div className="add-comment text-center">
       <a href={props.html_url}>
         <i className="fa fa-comment" />

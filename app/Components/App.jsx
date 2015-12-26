@@ -13,12 +13,12 @@ import config from '../config';
 import './App.less';
 
 const fetchIssues = () => Q.fcall(() => (
-  $.ajax('https://api.github.com/repos/' + config.repo + '/issues')
+  $.ajax(`https://api.github.com/repos/${config.repo}/issues?access_token=${localStorage.githubToken}`)
 ))
 .then(tils => _.sortBy(tils, '-created_at'))
 .then(tils => Q.all(tils.map(til => (
   Q.fcall(() => (
-    Q.resolve(til.comments ? $.ajax(til.comments_url) : [])
+    Q.resolve(til.comments ? $.ajax(`${til.comments_url}?access_token=${localStorage.githubToken}`) : [])
   ))
   .then(comments => {
     til.comments = comments;
@@ -27,7 +27,7 @@ const fetchIssues = () => Q.fcall(() => (
 ))));
 
 const fetchImage = () => Q.fcall(() => (
-  $.ajax('https://api.github.com/users/' + config.github)
+  $.ajax(`https://api.github.com/users/${config.github}?access_token=${localStorage.githubToken}`)
 )).get('avatar_url');
 
 export default class App extends Component {
@@ -45,17 +45,15 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div className="app">
-        <div className="container">
-          <Header title={config.title} img={this.state.img} />
-          {this.state.tils ?
-              <Tils tils={this.state.tils} /> :
-              <div className="loader">
-                <Loader />
-              </div>
-          }
-          <Footer />
-        </div>
+      <div className="app container">
+        <Header title={config.title} img={this.state.img} />
+        {this.state.tils ?
+            <Tils tils={this.state.tils} /> :
+            <div className="loader">
+              <Loader />
+            </div>
+        }
+        <Footer />
       </div>
     );
   }

@@ -8,7 +8,7 @@ import './Comment.less';
 const Comment = props => (
   <div className="comment">
     <div className="row">
-      <div className="col-xs-2 col-xs-offset-2">
+      <div className="col-sm-2 col-sm-offset-2">
         <div>
           <a href={props.user.html_url}>
             <span className="text-muted">{props.user.login}</span>
@@ -20,7 +20,7 @@ const Comment = props => (
           </a>
         </div>
       </div>
-      <div className="col-xs-6">
+      <div className="col-sm-6">
         <Markdown markdown={props.body} size={12} />
       </div>
     </div>
