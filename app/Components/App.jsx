@@ -12,10 +12,10 @@ import config from '../config';
 
 import './App.less';
 
-const parameters = localStorage.githubToken ? `access_token=${localStorage.githubToken}` : '';
+const parameters = localStorage.githubToken ? `?access_token=${localStorage.githubToken}` : '';
 
 const fetchIssues = () => Q.fcall(() => (
-  $.ajax(`https://api.github.com/repos/${config.repo}/issues?${parameters}`)
+  $.ajax(`https://api.github.com/repos/${config.repo}/issues${parameters}`)
 ))
 .then(tils => _.sortBy(tils, '-created_at'))
 .then(tils => Q.all(tils.map(til => (
