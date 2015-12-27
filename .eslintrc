@@ -4,6 +4,7 @@
     "comma-dangle": [2, "never"]
   },
   "globals": {
+    "ga": true,
     "hljs": true,
     "emojiParser": true
   }

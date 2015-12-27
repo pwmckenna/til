@@ -38,4 +38,4 @@ export default class Title extends Component {
 Title.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
-}
+};
