@@ -12,13 +12,15 @@ import config from '../config';
 
 import './App.less';
 
+const parameters = localStorage.githubToken ? `access_token=${localStorage.githubToken}` : '';
+
 const fetchIssues = () => Q.fcall(() => (
-  $.ajax(`https://api.github.com/repos/${config.repo}/issues?access_token=${localStorage.githubToken}`)
+  $.ajax(`https://api.github.com/repos/${config.repo}/issues?${parameters}`)
 ))
 .then(tils => _.sortBy(tils, '-created_at'))
 .then(tils => Q.all(tils.map(til => (
   Q.fcall(() => (
-    Q.resolve(til.comments ? $.ajax(`${til.comments_url}?access_token=${localStorage.githubToken}`) : [])
+    Q.resolve(til.comments ? $.ajax(`${til.comments_url}${parameters}`) : [])
   ))
   .then(comments => {
     til.comments = comments;
@@ -27,7 +29,7 @@ const fetchIssues = () => Q.fcall(() => (
 ))));
 
 const fetchImage = () => Q.fcall(() => (
-  $.ajax(`https://api.github.com/users/${config.github}?access_token=${localStorage.githubToken}`)
+  $.ajax(`https://api.github.com/users/${config.github}${parameters}`)
 )).get('avatar_url');
 
 export default class App extends Component {
