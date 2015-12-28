@@ -12,7 +12,7 @@ import slug from '../utils/slug';
 
 import './Issue.less';
 
-export default class Issue extends Component {
+class Issue extends Component {
   componentDidMount() {
     if (window.location.hash === '#' + this.getAnchor()) {
       window.location = window.location.hash;
@@ -71,3 +71,5 @@ Issue.propTypes = {
   title: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired
 };
+
+export default Issue;

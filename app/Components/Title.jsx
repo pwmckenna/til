@@ -6,7 +6,7 @@ import tweet from '../utils/tweet';
 
 import './Title.less';
 
-export default class Title extends Component {
+class Title extends Component {
   handleShare(e) {
     e.preventDefault();
     tweet(this.props.url, this.props.title);
@@ -55,3 +55,5 @@ Title.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 };
+
+export default Title;

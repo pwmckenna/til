@@ -6,7 +6,7 @@ import config from '../config';
 
 import './Footer.less';
 
-export default () => (
+const Header = () => (
   <div className="footer text-center">
     <h3>
       <img src="vendor/emoji-parser/emoji/evergreen_tree.png" />
@@ -28,3 +28,5 @@ export default () => (
     </div>
   </div>
 );
+
+export default Header;

@@ -32,7 +32,7 @@ const fetchImage = () => Q.fcall(() => (
   $.ajax(`https://api.github.com/users/${config.github}${parameters}`)
 )).get('avatar_url');
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -60,3 +60,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;
