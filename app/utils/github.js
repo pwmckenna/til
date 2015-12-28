@@ -13,18 +13,14 @@ const fetchImage = () => Q.fcall(() => (
 const fetchIssues = () => Q.fcall(() => (
   $.ajax(`https://api.github.com/repos/${config.repo}/issues${parameters}`)
 ))
-.then(issues => _.sortBy(issues, '-created_at'))
-.then(issues => Q.all(issues.map(issue => (
-  Q.fcall(() => (
-    Q.resolve(issue.comments ? $.ajax(`${issue.comments_url}${parameters}`) : [])
-  ))
-  .then(comments => {
-    issue.comments = comments;
-    return issue;
-  })
-))));
+.then(issues => _.sortBy(issues, '-created_at'));
+
+const fetchIssueComments = (issue) => Q.fcall(() => (
+  Q($.ajax(`${issue.comments_url}${parameters}`))
+));
 
 export default {
   fetchImage,
-  fetchIssues
+  fetchIssues,
+  fetchIssueComments
 };

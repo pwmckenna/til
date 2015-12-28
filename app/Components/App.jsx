@@ -6,30 +6,20 @@ import Footer from './Footer';
 import Issues from './Issues';
 import Loader from './Loader';
 
+import asyncProps from '../containers/asyncProps';
+
 import config from '../config';
 import github from '../utils/github';
 
 import './App.less';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      issues: null
-    };
-  }
-  componentDidMount() {
-    Q.all([
-      github.fetchIssues(),
-      github.fetchImage()
-    ]).spread((issues, img) => this.setState({ issues, img }));
-  }
   render() {
     return (
       <div className="app container">
-        <Header title={config.title} img={this.state.img} />
-        {this.state.issues ?
-            <Issues issues={this.state.issues} /> :
+        <Header title={config.title} img={this.props.img} />
+        {this.props.issues ?
+            <Issues issues={this.props.issues} /> :
             <div className="loader">
               <Loader />
             </div>
@@ -40,4 +30,14 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  issues: Issues.propTypes.issues,
+  img: Header.propTypes.img
+};
+
+export default asyncProps(App, () => (
+  Q.all([
+    github.fetchIssues(),
+    github.fetchImage()
+  ]).spread((issues, img) => ({ issues, img }))
+));

@@ -54,7 +54,7 @@ class Issue extends Component {
         <Markdown className="body" markdown={this.props.body} />
 
         <Comments
-          comments={this.props.comments}
+          comments_url={this.props.comments_url}
           html_url={this.props.html_url}
         />
       </li>
@@ -64,7 +64,6 @@ class Issue extends Component {
 
 Issue.propTypes = {
   body: PropTypes.string.isRequired,
-  comments: Comments.propTypes.comments,
   created_at: PropTypes.string.isRequired,
   html_url: PropTypes.string.isRequired,
   labels: PropTypes.arrayOf(PropTypes.shape(Label.propTypes)).isRequired,
