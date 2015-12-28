@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Q from 'q';
-import $ from 'jquery';
-import _ from 'lodash';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -9,28 +7,9 @@ import Issues from './Issues';
 import Loader from './Loader';
 
 import config from '../config';
+import github from '../utils/github';
 
 import './App.less';
-
-const parameters = localStorage.githubToken ? `?access_token=${localStorage.githubToken}` : '';
-
-const fetchIssues = () => Q.fcall(() => (
-  $.ajax(`https://api.github.com/repos/${config.repo}/issues${parameters}`)
-))
-.then(issues => _.sortBy(issues, '-created_at'))
-.then(issues => Q.all(issues.map(issue => (
-  Q.fcall(() => (
-    Q.resolve(issue.comments ? $.ajax(`${issue.comments_url}${parameters}`) : [])
-  ))
-  .then(comments => {
-    issue.comments = comments;
-    return issue;
-  })
-))));
-
-const fetchImage = () => Q.fcall(() => (
-  $.ajax(`https://api.github.com/users/${config.github}${parameters}`)
-)).get('avatar_url');
 
 class App extends Component {
   constructor() {
@@ -41,8 +20,8 @@ class App extends Component {
   }
   componentDidMount() {
     Q.all([
-      fetchIssues(),
-      fetchImage()
+      github.fetchIssues(),
+      github.fetchImage()
     ]).spread((issues, img) => this.setState({ issues, img }));
   }
   render() {
