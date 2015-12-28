@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import Header from './Header';
 import Footer from './Footer';
-import Tils from './Tils';
+import Issues from './Issues';
 import Loader from './Loader';
 
 import config from '../config';
@@ -17,14 +17,14 @@ const parameters = localStorage.githubToken ? `?access_token=${localStorage.gith
 const fetchIssues = () => Q.fcall(() => (
   $.ajax(`https://api.github.com/repos/${config.repo}/issues${parameters}`)
 ))
-.then(tils => _.sortBy(tils, '-created_at'))
-.then(tils => Q.all(tils.map(til => (
+.then(issues => _.sortBy(issues, '-created_at'))
+.then(issues => Q.all(issues.map(issue => (
   Q.fcall(() => (
-    Q.resolve(til.comments ? $.ajax(`${til.comments_url}${parameters}`) : [])
+    Q.resolve(issue.comments ? $.ajax(`${issue.comments_url}${parameters}`) : [])
   ))
   .then(comments => {
-    til.comments = comments;
-    return til;
+    issue.comments = comments;
+    return issue;
   })
 ))));
 
@@ -36,21 +36,21 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      tils: null
+      issues: null
     };
   }
   componentDidMount() {
     Q.all([
       fetchIssues(),
       fetchImage()
-    ]).spread((tils, img) => this.setState({ tils, img }));
+    ]).spread((issues, img) => this.setState({ issues, img }));
   }
   render() {
     return (
       <div className="app container">
         <Header title={config.title} img={this.state.img} />
-        {this.state.tils ?
-            <Tils tils={this.state.tils} /> :
+        {this.state.issues ?
+            <Issues issues={this.state.issues} /> :
             <div className="loader">
               <Loader />
             </div>
