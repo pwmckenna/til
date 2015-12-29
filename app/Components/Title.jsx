@@ -16,12 +16,12 @@ class Title extends Component {
   }
   handleShare(e) {
     e.preventDefault();
-    const to = `til-${slug(this.props.title)}`;
+    const to = `til/${slug(this.props.title)}`;
     const url = window.location.origin + this.context.history.createHref(to);
     tweet(url, this.props.title);
   }
   render() {
-    const to = `til-${slug(this.props.title)}`;
+    const to = `til/${slug(this.props.title)}`;
     const anchor = (
       <Link
         to={to}

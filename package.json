@@ -14,7 +14,8 @@
     "react-dom": "^0.14.3",
     "react-responsive": "^1.0.1",
     "react-router": "^1.0.3",
-    "react-spinkit": "^1.1.4"
+    "react-spinkit": "^1.1.4",
+    "scroll-behavior": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",

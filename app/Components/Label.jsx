@@ -13,7 +13,7 @@ class Label extends Component {
   render() {
     return (
       <Link
-        to={`label-${slug(this.props.name)}`}
+        to={`label/${slug(this.props.name)}`}
         key={this.props.name}
         className="badge label"
         style={{
