@@ -34,7 +34,7 @@ class App extends Component {
   }
 }
 
-export default asyncProps(App, () => (
+export default asyncProps(App, App.propTypes, () => (
   Q.all([
     github.fetchIssues(),
     github.fetchImage()

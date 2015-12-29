@@ -37,8 +37,8 @@ const fetchComments = props => (
   .then(comments => ({ comments }))
 );
 
-const commentsPropTypes = {
+const propTypes = {
   comments_url: PropTypes.string.isRequired
 };
 
-export default asyncProps(Comments, fetchComments, commentsPropTypes);
+export default asyncProps(Comments, propTypes, fetchComments);
