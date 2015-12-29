@@ -8,8 +8,6 @@ import Markdown from './Markdown';
 import Dot from './Dot';
 import Title from './Title';
 
-import slug from '../utils/slug';
-
 import './Issue.less';
 
 class Issue extends Component {
@@ -22,21 +20,10 @@ class Issue extends Component {
     title: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired
   }
-  componentDidMount() {
-    if (window.location.hash === '#' + this.getAnchor()) {
-      window.location = window.location.hash;
-    }
-  }
-  getAnchor() {
-    return 'til-' + slug(this.props.title);
-  }
-  getHref() {
-    return window.location.origin + window.location.pathname + window.location.search + '#' + this.getAnchor();
-  }
   render() {
     return (
-      <li id={this.getAnchor()} className="issue">
-        <Title title={this.props.title} url={this.getHref()} />
+      <li className="issue">
+        <Title title={this.props.title} />
 
         <div className="text-center info">
           <div className="col-xs-5">

@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+
+import slug from '../utils/slug';
 
 import './Label.less';
 
@@ -9,7 +12,8 @@ class Label extends Component {
   }
   render() {
     return (
-      <span
+      <Link
+        to={`label-${slug(this.props.name)}`}
         key={this.props.name}
         className="badge label"
         style={{
@@ -17,7 +21,7 @@ class Label extends Component {
         }}
       >
         {this.props.name}
-      </span>
+      </Link>
     );
   }
 }

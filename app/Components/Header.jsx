@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import './Header.less';
 
@@ -12,13 +13,13 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <a href="#">
+        <Link to="">
           {this.props.img ?
             <img src={this.props.img} className="img-circle center-block avatar fadein" /> :
             <img src={pixel} className="img-circle center-block avatar" />
           }
           <h3 className="text-center">{this.props.title}</h3>
-        </a>
+        </Link>
       </div>
     );
   }

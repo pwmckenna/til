@@ -6,6 +6,9 @@ export default (Component, propTypes, fetch) => {
     componentDidMount() {
       fetch(this.props).then(props => this.setState(props));
     }
+    componentWillReceiveProps(nextProps) {
+      fetch(nextProps).then(props => this.setState(props));
+    }
     render() {
       return <Component {...this.props} {...this.state} />;
     }
