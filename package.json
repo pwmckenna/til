@@ -33,6 +33,7 @@
     "json-loader": "^0.5.4",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
+    "pre-commit": "^1.1.2",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
@@ -51,6 +52,9 @@
     "build": "npm run clean && NODE_ENV=production webpack -p --config webpack.production.config.js --progress",
     "deploy": "npm run build && gh-pages -d build"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pwmckenna/til.git"
