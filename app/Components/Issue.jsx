@@ -13,6 +13,15 @@ import slug from '../utils/slug';
 import './Issue.less';
 
 class Issue extends Component {
+  static propTypes = {
+    body: PropTypes.string.isRequired,
+    comments_url: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
+    html_url: PropTypes.string.isRequired,
+    labels: PropTypes.arrayOf(PropTypes.shape(Label.propTypes)).isRequired,
+    title: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired
+  }
   componentDidMount() {
     if (window.location.hash === '#' + this.getAnchor()) {
       window.location = window.location.hash;
@@ -61,14 +70,5 @@ class Issue extends Component {
     );
   }
 }
-
-Issue.propTypes = {
-  body: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
-  html_url: PropTypes.string.isRequired,
-  labels: PropTypes.arrayOf(PropTypes.shape(Label.propTypes)).isRequired,
-  title: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired
-};
 
 export default Issue;

@@ -7,6 +7,10 @@ import tweet from '../utils/tweet';
 import './Title.less';
 
 class Title extends Component {
+  static propTypes = {
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }
   handleShare(e) {
     e.preventDefault();
     tweet(this.props.url, this.props.title);
@@ -50,10 +54,5 @@ class Title extends Component {
     );
   }
 }
-
-Title.propTypes = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
-};
 
 export default Title;

@@ -1,22 +1,25 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import './Label.less';
 
-const Label = (props) => (
-  <span
-    key={props.name}
-    className="badge label"
-    style={{
-      backgroundColor: '#' + props.color
-    }}
-  >
-    {props.name}
-  </span>
-);
-
-Label.propTypes = {
-  color: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
-};
+class Label extends Component {
+  static propTypes = {
+    color: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }
+  render() {
+    return (
+      <span
+        key={this.props.name}
+        className="badge label"
+        style={{
+          backgroundColor: '#' + this.props.color
+        }}
+      >
+        {this.props.name}
+      </span>
+    );
+  }
+}
 
 export default Label;

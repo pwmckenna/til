@@ -2,14 +2,11 @@ import React from 'react';
 
 export default (Component, fetch, propTypes) => {
   return React.createClass({
-    propTypes: propTypes,
-    componentDidMount: function () {
-      fetch(this.props).then(props => {
-        this.setState(props);
-        console.log(this.refs.component);
-      });
+    propTypes,
+    componentDidMount() {
+      fetch(this.props).then(props => this.setState(props));
     },
-    render: function () {
+    render() {
       return <Component {...this.props} {...this.state} />;
     }
   });

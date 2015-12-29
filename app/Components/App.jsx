@@ -14,6 +14,10 @@ import github from '../utils/github';
 import './App.less';
 
 class App extends Component {
+  static propTypes = {
+    issues: Issues.propTypes.issues,
+    img: Header.propTypes.img
+  }
   render() {
     return (
       <div className="app container">
@@ -29,11 +33,6 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  issues: Issues.propTypes.issues,
-  img: Header.propTypes.img
-};
 
 export default asyncProps(App, () => (
   Q.all([

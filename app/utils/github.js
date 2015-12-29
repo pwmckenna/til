@@ -16,7 +16,7 @@ const fetchIssues = () => Q.fcall(() => (
 .then(issues => _.sortBy(issues, '-created_at'));
 
 const fetchIssueComments = (issue) => Q.fcall(() => (
-  Q($.ajax(`${issue.comments_url}${parameters}`))
+  Q.resolve($.ajax(`${issue.comments_url}${parameters}`))
 ));
 
 export default {
