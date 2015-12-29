@@ -27,13 +27,18 @@ const Comments = props => (
 
 Comments.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.shape(Comment.propTypes)),
-  comments_url: PropTypes.string.isRequired,
   html_url: PropTypes.string.isRequired
 };
 
-export default asyncProps(Comments, props => (
+const fetchComments = props => (
   github.fetchIssueComments({
     comments_url: props.comments_url
   })
   .then(comments => ({ comments }))
-));
+)
+
+const commentsPropTypes = {
+  comments_url: PropTypes.string.isRequired
+};
+
+export default asyncProps(Comments, fetchComments, commentsPropTypes);
