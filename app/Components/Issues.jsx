@@ -10,11 +10,11 @@ class Issues extends Component {
   }
   render() {
     return (
-      <ul className="issues">
+      <div className="issues">
         {this.props.issues.map(issue => (
           <Issue key={issue.id} {...issue} />
         ))}
-      </ul>
+      </div>
     );
   }
 }

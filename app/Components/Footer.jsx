@@ -41,9 +41,4 @@ class Footer extends Component {
   }
 }
 
-export default staticProps(Footer, {
-  name: config.name,
-  repo: config.repo,
-  twitter: config.twitter,
-  github: config.github
-});
+export default staticProps(Footer, config);

@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import $ from 'jquery';
 
 import Comment from './Comment';
 
 import asyncProps from '../containers/asyncProps';
 
-import github from '../utils/github';
-
 import './Comments.less';
 
 class Comments extends Component {
   static propTypes = {
+    comments_url: PropTypes.string.isRequired,
     comments: PropTypes.arrayOf(PropTypes.shape(Comment.propTypes)),
     html_url: PropTypes.string.isRequired
   }
@@ -30,15 +30,6 @@ class Comments extends Component {
   }
 }
 
-const fetchComments = props => (
-  github.fetchIssueComments({
-    comments_url: props.comments_url
-  })
-  .then(comments => ({ comments }))
-);
-
-const propTypes = {
-  comments_url: PropTypes.string.isRequired
-};
-
-export default asyncProps(Comments, propTypes, fetchComments);
+export default asyncProps(Comments, props => (
+  $.ajax(props.comments_url).then(comments => ({ comments }))
+));

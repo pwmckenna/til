@@ -22,7 +22,7 @@ class Issue extends Component {
   }
   render() {
     return (
-      <li className="issue">
+      <div className="issue">
         <Title title={this.props.title} />
 
         <div className="text-center info">
@@ -53,7 +53,7 @@ class Issue extends Component {
           comments_url={this.props.comments_url}
           html_url={this.props.html_url}
         />
-      </li>
+      </div>
     );
   }
 }

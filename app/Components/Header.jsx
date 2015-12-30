@@ -1,5 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
+import Q from 'q';
+
+import asyncProps from '../containers/asyncProps';
+import staticProps from '../containers/staticProps';
+
+import config from '../config';
 
 import './Header.less';
 
@@ -25,4 +32,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default asyncProps(staticProps(Header, config), () => (
+  Q.resolve($.ajax(`https://api.github.com/users/${config.github}`))
+    .get('avatar_url')
+    .then(img => ({ img }))
+));

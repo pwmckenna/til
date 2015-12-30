@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Link, PropTypes as RouterPropTypes } from 'react-router';
 import MediaQuery from 'react-responsive';
 
-import tweet from '../utils/tweet';
+import Twitter from './Twitter';
+
 import slug from '../utils/slug';
 
 import './Title.less';
@@ -14,14 +15,10 @@ class Title extends Component {
   static contextTypes = {
     history: RouterPropTypes.history.isRequired
   }
-  handleShare(e) {
-    e.preventDefault();
-    const to = `til/${slug(this.props.title)}`;
-    const url = window.location.origin + this.context.history.createHref(to);
-    tweet(url, this.props.title);
-  }
   render() {
     const to = `til/${slug(this.props.title)}`;
+    const url = window.location.origin + this.context.history.createHref(to);
+
     const anchor = (
       <Link
         to={to}
@@ -30,23 +27,13 @@ class Title extends Component {
         <i className="fa fa-link"></i>
       </Link>
     );
-    const twitter = (
-      <a
-        target="_blank"
-        className="header-link"
-        onClick={this.handleShare.bind(this)}
-        href={`https://twitter.com/share?url=${window.location.origin + this.context.history.createHref(to)}`}
-      >
-        <i className="fa fa-twitter" />
-      </a>
-    );
     return (
       <div className="text-center title">
         <MediaQuery query="(min-width: 768px)">
           <h1>
             {anchor}
             {this.props.title}
-            {twitter}
+            <Twitter className="header-link" title={this.props.title} url={url} />
           </h1>
         </MediaQuery>
         <MediaQuery query="(max-width: 768px)">
@@ -54,7 +41,7 @@ class Title extends Component {
             {this.props.title}
           </h1>
           {anchor}
-          {twitter}
+          <Twitter className="header-link" title={this.props.title} url={url} />
         </MediaQuery>
       </div>
     );
