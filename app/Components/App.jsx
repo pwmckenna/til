@@ -23,12 +23,13 @@ class App extends Component {
     return (
       <div className="app container">
         <Header />
-        {this.props.issues ?
-            <Issues issues={this.props.issues} /> :
-            <div className="loader">
-              <Loader />
-            </div>
-        }
+        {this.props.issues ? (
+            <Issues issues={this.props.issues} />
+        ) : (
+          <div className="loader">
+            <Loader />
+          </div>
+        )}
         <Footer />
       </div>
     );

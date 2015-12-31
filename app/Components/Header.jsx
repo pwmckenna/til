@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import $ from 'jquery';
 import Q from 'q';
 
+import Fade from './Fade';
+
 import asyncProps from '../containers/asyncProps';
 import staticProps from '../containers/staticProps';
 
@@ -22,7 +24,11 @@ class Header extends Component {
       <div className="header">
         <Link to="">
           {this.props.img ?
-            <img src={this.props.img} className="img-circle center-block avatar fadein" /> :
+            (
+              <Fade>
+                <img src={this.props.img} className="img-circle center-block avatar" />
+              </Fade>
+            ) :
             <img src={pixel} className="img-circle center-block avatar" />
           }
           <h3 className="text-center">{this.props.title}</h3>

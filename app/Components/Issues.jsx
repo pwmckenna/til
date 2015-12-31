@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
+import Fade from './Fade';
 import Issue from './Issue';
 
 import './Issues.less';
@@ -11,9 +12,11 @@ class Issues extends Component {
   render() {
     return (
       <div className="issues">
+        <Fade>
         {this.props.issues.map(issue => (
           <Issue key={issue.id} {...issue} />
         ))}
+        </Fade>
       </div>
     );
   }
