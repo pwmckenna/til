@@ -3,8 +3,6 @@ import Q from 'q';
 import $ from 'jquery';
 import _ from 'lodash';
 
-import Header from './Header';
-import Footer from './Footer';
 import Issues from './Issues';
 import Loader from './Loader';
 
@@ -21,8 +19,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="app container">
-        <Header />
+      <div className="app">
         {this.props.issues ? (
             <Issues issues={this.props.issues} />
         ) : (
@@ -30,7 +27,6 @@ class App extends Component {
             <Loader />
           </div>
         )}
-        <Footer />
       </div>
     );
   }
