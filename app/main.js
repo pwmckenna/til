@@ -26,24 +26,19 @@ const history = createHashHistory({
   queryKey: false
 });
 
-const onEnter = () => window.scrollTo(0, 0);
-
 render((
   <Router history={history}>
     <Route
       path="/"
       component={App}
-      onEnter={onEnter}
     />
     <Route
       path="til/:til"
       component={App}
-      onEnter={onEnter}
     />
     <Route
       path="label/:label"
       component={App}
-      onEnter={onEnter}
     />
   </Router>
 ), document.getElementById('main'));

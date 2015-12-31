@@ -10,9 +10,13 @@ class Issues extends Component {
     issues: PropTypes.arrayOf(PropTypes.shape(Issue.propTypes))
   }
   render() {
+    // make the key unique to the set of issues being displayed,
+    // so if the list changes the fade effect occurs for issues
+    // that already had been rendered
+    const key = this.props.issues.map(issue => issue.id).join('');
     return (
       <div className="issues">
-        <Fade>
+        <Fade key={key}>
         {this.props.issues.map(issue => (
           <Issue key={issue.id} {...issue} />
         ))}
