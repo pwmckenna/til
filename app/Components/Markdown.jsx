@@ -1,9 +1,24 @@
 import React, { Component, PropTypes } from 'react';
+import marked from 'marked';
 
-import markdown from '../utils/markdown';
 import emoji from '../utils/emoji';
 
 import './Markdown.less';
+
+marked.setOptions({
+  highlight: code => hljs.highlightAuto(code).value
+});
+const renderer = new marked.Renderer();
+renderer.listitem = function listitem(text) {
+  if (/^\s*\[[x ]\]\s*/.test(text)) {
+    const formatted = text
+      .replace(/^\s*\[ \]\s*/, '<input type="checkbox" class="task-list-item-checkbox" disabled> ')
+      .replace(/^\s*\[x\]\s*/, '<input type="checkbox" class="task-list-item-checkbox" disabled checked> ');
+    return '<li style="list-style: none">' + formatted + '</li>';
+  }
+  return '<li>' + text + '</li>';
+};
+
 
 class Markdown extends Component {
   static propTypes = {
@@ -15,7 +30,7 @@ class Markdown extends Component {
       <div
         className={this.props.className + ' markdown'}
         dangerouslySetInnerHTML={{
-          __html: emoji(markdown(this.props.markdown))
+          __html: emoji(marked(this.props.markdown, { renderer }))
         }}
       />
     );
