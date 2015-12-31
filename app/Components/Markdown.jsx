@@ -9,7 +9,7 @@ marked.setOptions({
   highlight: code => hljs.highlightAuto(code).value
 });
 const renderer = new marked.Renderer();
-renderer.listitem = function listitem(text) {
+renderer.listitem = function formatTaskList(text) {
   if (/^\s*\[[x ]\]\s*/.test(text)) {
     const formatted = text
       .replace(/^\s*\[ \]\s*/, '<input type="checkbox" class="task-list-item-checkbox" disabled> ')
