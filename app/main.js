@@ -10,6 +10,7 @@ import Layout from './Components/Layout';
 import Issues from './Components/Issues';
 
 import asyncProps from './containers/asyncProps';
+import filterProps from './containers/filterProps';
 
 import slug from './utils/slug';
 import config from './config';
@@ -30,34 +31,27 @@ if (localStorage.githubToken) {
   });
 }
 
-const fetchIssues = () => Q.resolve($.ajax(`https://api.github.com/repos/${config.repo}/issues`));
 const sortIssues = issues => _.sortBy(issues, '-created_at');
 
-const LabelIssuesPage = asyncProps(Issues, props => {
-  const labelFilter = issues => issues.filter(issue => (
+const fetchIssues = () => {
+  return Q.resolve($.ajax(`https://api.github.com/repos/${config.repo}/issues`))
+    .then(sortIssues)
+    .then(issues => ({ issues }));
+};
+
+const LabelIssuesPage = filterProps(Issues, props => {
+  const issues = props.issues && props.issues.filter(issue => (
     issue.labels.find(label => slug(label.name) === props.params.label)
   ));
-
-  return fetchIssues()
-    .then(sortIssues)
-    .then(labelFilter)
-    .then(issues => ({ issues }));
+  return { issues };
 });
 
-const IssuePage = asyncProps(Issues, props => {
-  const issueFilter = issues => issues.filter(issue => (
+const IssuePage = filterProps(Issues, props => {
+  const issues = props.issues && props.issues.filter(issue => (
     // if we're on a single issue page, filter for just that issue
     slug(issue.title) === props.params.til
   ));
-  return fetchIssues()
-    .then(issueFilter)
-    .then(issues => ({ issues }));
-});
-
-const IssuesPage = asyncProps(Issues, () => {
-  return fetchIssues()
-    .then(sortIssues)
-    .then(issues => ({ issues }));
+  return { issues };
 });
 
 // setup routing
@@ -72,17 +66,17 @@ render((
     <Route component={Layout}>
       <Route
         path="/"
-        component={IssuesPage}
+        component={asyncProps(Issues, fetchIssues)}
         onEnter={onEnter}
       />
       <Route
         path="til/:til"
-        component={IssuePage}
+        component={asyncProps(IssuePage, fetchIssues)}
         onEnter={onEnter}
       />
       <Route
         path="label/:label"
-        component={LabelIssuesPage}
+        component={asyncProps(LabelIssuesPage, fetchIssues)}
         onEnter={onEnter}
       />
     </Route>
