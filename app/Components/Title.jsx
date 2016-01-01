@@ -27,21 +27,31 @@ class Title extends Component {
         <i className="fa fa-link"></i>
       </Link>
     );
+    const title = (
+      <Link to={to}>{this.props.title}</Link>
+    );
+    const twitter = (
+      <Twitter
+        className="header-link"
+        title={this.props.title}
+        url={url}
+      />
+    );
     return (
       <div className="text-center title">
         <MediaQuery query="(min-width: 768px)">
           <h1>
             {anchor}
-            {this.props.title}
-            <Twitter className="header-link" title={this.props.title} url={url} />
+            {title}
+            {twitter}
           </h1>
         </MediaQuery>
         <MediaQuery query="(max-width: 768px)">
           <h1>
-            {this.props.title}
+            {title}
           </h1>
           {anchor}
-          <Twitter className="header-link" title={this.props.title} url={url} />
+          {twitter}
         </MediaQuery>
       </div>
     );
