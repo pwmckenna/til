@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Link, PropTypes as RouterPropTypes } from 'react-router';
+import { Link } from 'react-router';
 import MediaQuery from 'react-responsive';
 
 import Twitter from './Twitter';
@@ -13,11 +13,11 @@ class Title extends Component {
     title: PropTypes.string.isRequired
   }
   static contextTypes = {
-    history: RouterPropTypes.history.isRequired
+    router: PropTypes.object.isRequired
   }
   render() {
     const to = `til/${slug(this.props.title)}`;
-    const url = window.location.origin + this.context.history.createHref(to);
+    const url = window.location.origin + this.context.router.createHref(to);
 
     const anchor = (
       <Link

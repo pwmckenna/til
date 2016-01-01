@@ -5,7 +5,7 @@ import { createHashHistory } from 'history';
 import $ from 'jquery';
 
 import Layout from './Components/Layout';
-import App from './Components/App';
+import Issues from './Components/Issues';
 
 // setup google analytics
 import './utils/ga';
@@ -35,17 +35,17 @@ render((
     <Route component={Layout}>
       <Route
         path="/"
-        component={App}
+        component={Issues}
         onEnter={onEnter}
       />
       <Route
         path="til/:til"
-        component={App}
+        component={Issues}
         onEnter={onEnter}
       />
       <Route
         path="label/:label"
-        component={App}
+        component={Issues}
         onEnter={onEnter}
       />
     </Route>
