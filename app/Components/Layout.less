@@ -23,5 +23,10 @@
     padding: 0
   }
 
-  max-width: @breakpoint;
+  .container {
+    max-width: @breakpoint;
+    @media (min-width : @breakpoint) {
+      width: @breakpoint;
+    }
+  }
 }

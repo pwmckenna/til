@@ -39,7 +39,7 @@ class Title extends Component {
     );
     return (
       <div className="text-center title">
-        <MediaQuery query="(min-width: 768px)">
+        <MediaQuery query="(min-width: 769px)">
           <h1>
             {anchor}
             {title}

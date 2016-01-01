@@ -11,10 +11,12 @@ class Layout extends Component {
   }
   render() {
     return (
-      <div className="layout container">
-        <Header />
-        {this.props.children}
-        <Footer />
+      <div className="layout">
+        <div className="container">
+          <Header />
+          {this.props.children}
+          <Footer />
+        </div>
       </div>
     );
   }
