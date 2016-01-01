@@ -1,25 +1,29 @@
-  .enter {
-    opacity: 0.01;
-  }
+@show: 1;
+@hide: 0.01;
+@ease: 500ms;
 
-  .enter.enterActive {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
+.enter {
+  opacity: @hide;
+}
 
-  .appear {
-    opacity: 0.01;
-  }
+.enter.enterActive {
+  opacity: @show;
+  transition: opacity @ease ease-in;
+}
 
-  .appear.appearActive {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
+.appear {
+  opacity: @hide;
+}
 
- .leave {
-    opacity: 1;
-  }
+.appear.appearActive {
+  opacity: @show;
+  transition: opacity @ease ease-in;
+}
 
-  .leave.leaveActive {
-    opacity: 0.01;
-  }
+.leave {
+  opacity: @show;
+}
+
+.leave.leaveActive {
+  opacity: @hide;
+}
