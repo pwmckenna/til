@@ -22,13 +22,12 @@ renderer.listitem = function formatTaskList(text) {
 
 class Markdown extends Component {
   static propTypes = {
-    markdown: PropTypes.string.isRequired,
-    className: PropTypes.any
+    markdown: PropTypes.string.isRequired
   }
   render() {
     return (
       <div
-        className={this.props.className + ' markdown'}
+        className="markdown"
         dangerouslySetInnerHTML={{
           __html: emoji(marked(this.props.markdown, { renderer }))
         }}

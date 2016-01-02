@@ -47,7 +47,9 @@ class Issue extends Component {
           </div>
         ) : null}
 
-        <Markdown className="body" markdown={this.props.body} />
+        <div className="body">
+          <Markdown markdown={this.props.body} />
+        </div>
 
         <Comments
           comments_url={this.props.comments_url}

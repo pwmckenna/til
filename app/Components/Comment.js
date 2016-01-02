@@ -32,7 +32,7 @@ class Comment extends Component {
             </div>
           </div>
           <div className="col-sm-6">
-            <Markdown markdown={this.props.body} size={12} />
+            <Markdown markdown={this.props.body} />
           </div>
         </div>
       </div>
