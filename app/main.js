@@ -39,7 +39,7 @@ const fetchIssues = () => {
     .then(issues => ({ issues }));
 };
 
-const asyncIssuesProps = promiseProps(fetchIssues);
+const promiseIssuesProps = promiseProps(fetchIssues);
 
 const filterLabelIssuesProps = filterProps(props => {
   const issues = props.issues && props.issues.filter(issue => (
@@ -56,9 +56,9 @@ const filterIssueProps = filterProps(props => {
   return { issues };
 });
 
-const IssuesPage = asyncIssuesProps(Issues);
-const IssuePage = asyncIssuesProps(filterIssueProps(Issues));
-const LabelPage = asyncIssuesProps(filterLabelIssuesProps(Issues));
+const IssuesPage = promiseIssuesProps(Issues);
+const IssuePage = promiseIssuesProps(filterIssueProps(Issues));
+const LabelPage = promiseIssuesProps(filterLabelIssuesProps(Issues));
 
 // setup routing
 const history = createHashHistory({
