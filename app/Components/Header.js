@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import $ from 'jquery';
 import Q from 'q';
 
+import Favicon from './Favicon';
 import Fade from './Fade';
 
 import promiseProps from '../HoCs/promiseProps';
@@ -22,6 +23,7 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
+        {this.props.img ? <Favicon href={this.props.img} /> : null}
         <Link to="">
           {this.props.img ?
             (

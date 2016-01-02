@@ -69,7 +69,7 @@ const IssuesPage = _.compose(
   fade
 )(props => (
   <div>
-    <Issue {...props.issues[0]} />
+    <Issue key={props.issues[0].id} {...props.issues[0]} />
     <h3>Previously on {props.title}</h3>
     {props.issues.slice(1).map(issue => (
       <IssueListItem key={issue.id} {...issue} />
