@@ -56,6 +56,10 @@ const filterIssueProps = filterProps(props => {
   return { issues };
 });
 
+const IssuesPage = asyncIssuesProps(Issues);
+const IssuePage = asyncIssuesProps(filterIssueProps(Issues));
+const LabelPage = asyncIssuesProps(filterLabelIssuesProps(Issues));
+
 // setup routing
 const history = createHashHistory({
   queryKey: false
@@ -68,17 +72,17 @@ render((
     <Route component={Layout}>
       <Route
         path="/"
-        component={asyncIssuesProps(Issues)}
+        component={IssuesPage}
         onEnter={onEnter}
       />
       <Route
         path="til/:til"
-        component={asyncIssuesProps(filterIssueProps(Issues))}
+        component={IssuePage}
         onEnter={onEnter}
       />
       <Route
         path="label/:label"
-        component={asyncIssuesProps(filterLabelIssuesProps(Issues))}
+        component={LabelPage}
         onEnter={onEnter}
       />
     </Route>
