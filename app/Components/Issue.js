@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 
-import moment from 'moment';
-
 import Label from './Label';
 import Comments from './Comments';
 import Markdown from './Markdown';
 import Dot from './Dot';
 import Title from './Title';
+import Timestamp from './Timestamp';
 
 import './Issue.less';
 
@@ -36,7 +35,7 @@ class Issue extends Component {
           </div>
           <div className="col-xs-5">
             <a className="pull-left" href={this.props.html_url}>
-              <span className="text-muted">{moment(this.props.created_at).format('MMMM Do YYYY')}</span>
+              <Timestamp date={this.props.created_at} />
             </a>
           </div>
         </div>

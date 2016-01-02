@@ -7,10 +7,13 @@ import Q from 'q';
 import _ from 'lodash';
 
 import Layout from './Components/Layout';
-import Issues from './Components/Issues';
+import Issue from './Components/Issue';
+import IssueListItem from './Components/IssueListItem';
 
 import promiseProps from './HoCs/promiseProps';
 import filterProps from './HoCs/filterProps';
+import waitForProps from './HoCs/waitForProps';
+import fade from './HoCs/fade';
 
 import slug from './utils/slug';
 import config from './config';
@@ -40,25 +43,52 @@ const fetchIssues = () => {
 };
 
 const promiseIssuesProps = promiseProps(fetchIssues);
+const waitForIssuesProps = waitForProps(['issues']);
 
 const filterLabelIssuesProps = filterProps(props => {
-  const issues = props.issues && props.issues.filter(issue => (
+  const issues = props.issues.filter(issue => (
     issue.labels.find(label => slug(label.name) === props.params.label)
   ));
   return { issues };
 });
 
 const filterIssueProps = filterProps(props => {
-  const issues = props.issues && props.issues.filter(issue => (
+  const issues = props.issues.filter(issue => (
     // if we're on a single issue page, filter for just that issue
     slug(issue.title) === props.params.til
   ));
-  return { issues };
+  return issues[0];
 });
 
-const IssuesPage = promiseIssuesProps(Issues);
-const IssuePage = promiseIssuesProps(filterIssueProps(Issues));
-const LabelPage = promiseIssuesProps(filterLabelIssuesProps(Issues));
+const IssuesPage = _.compose(
+  promiseIssuesProps,
+  waitForIssuesProps,
+  fade
+)(props => (
+  <div>
+    {props.issues.map(issue => (
+      <Issue key={issue.id} {...issue} />
+    ))}
+  </div>
+));
+const IssuePage = _.compose(
+  promiseIssuesProps,
+  waitForIssuesProps,
+  filterIssueProps,
+  fade
+)(Issue);
+const LabelPage = _.compose(
+  promiseIssuesProps,
+  waitForIssuesProps,
+  filterLabelIssuesProps,
+  fade
+)(props => (
+  <div>
+    {props.issues.map(issue => (
+      <IssueListItem key={issue.id} {...issue} />
+    ))}
+  </div>
+));
 
 // setup routing
 const history = createHashHistory({
