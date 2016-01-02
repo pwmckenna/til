@@ -4,7 +4,7 @@ import Dot from './Dot';
 
 import config from '../config';
 
-import staticProps from '../containers/staticProps';
+import staticProps from '../HoCs/staticProps';
 
 import './Footer.less';
 
@@ -41,4 +41,4 @@ class Footer extends Component {
   }
 }
 
-export default staticProps(Footer, config);
+export default staticProps(config)(Footer);

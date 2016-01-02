@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 import Comment from './Comment';
 
-import asyncProps from '../containers/asyncProps';
+import promiseProps from '../HoCs/promiseProps';
 
 import './Comments.less';
 
@@ -30,6 +30,6 @@ class Comments extends Component {
   }
 }
 
-export default asyncProps(Comments, props => (
+export default promiseProps(props => (
   $.ajax(props.comments_url).then(comments => ({ comments }))
-));
+))(Comments);

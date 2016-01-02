@@ -5,8 +5,8 @@ import Q from 'q';
 
 import Fade from './Fade';
 
-import asyncProps from '../containers/asyncProps';
-import staticProps from '../containers/staticProps';
+import promiseProps from '../HoCs/promiseProps';
+import staticProps from '../HoCs/staticProps';
 
 import config from '../config';
 
@@ -38,8 +38,11 @@ class Header extends Component {
   }
 }
 
-export default asyncProps(staticProps(Header, config), () => (
-  Q.resolve($.ajax(`https://api.github.com/users/${config.github}`))
+const configProps = staticProps(config);
+const avatarProp = promiseProps(props => (
+  Q.resolve($.ajax(`https://api.github.com/users/${props.github}`))
     .get('avatar_url')
     .then(img => ({ img }))
 ));
+
+export default configProps(avatarProp(Header));

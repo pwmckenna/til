@@ -1,7 +1,7 @@
 import React, { Component as ReactComponent } from 'react';
 
-export default (Component, fetch) => {
-  return class extends ReactComponent {
+export default fetch => Component => (
+  class extends ReactComponent {
     componentDidMount() {
       fetch(this.props).then(props => this.setState(props));
     }
@@ -11,5 +11,5 @@ export default (Component, fetch) => {
     render() {
       return <Component {...this.props} {...this.state} />;
     }
-  };
-};
+  }
+);

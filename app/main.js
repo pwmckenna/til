@@ -9,8 +9,8 @@ import _ from 'lodash';
 import Layout from './Components/Layout';
 import Issues from './Components/Issues';
 
-import asyncProps from './containers/asyncProps';
-import filterProps from './containers/filterProps';
+import promiseProps from './HoCs/promiseProps';
+import filterProps from './HoCs/filterProps';
 
 import slug from './utils/slug';
 import config from './config';
@@ -39,14 +39,16 @@ const fetchIssues = () => {
     .then(issues => ({ issues }));
 };
 
-const LabelIssuesPage = filterProps(Issues, props => {
+const asyncIssuesProps = promiseProps(fetchIssues);
+
+const filterLabelIssuesProps = filterProps(props => {
   const issues = props.issues && props.issues.filter(issue => (
     issue.labels.find(label => slug(label.name) === props.params.label)
   ));
   return { issues };
 });
 
-const IssuePage = filterProps(Issues, props => {
+const filterIssueProps = filterProps(props => {
   const issues = props.issues && props.issues.filter(issue => (
     // if we're on a single issue page, filter for just that issue
     slug(issue.title) === props.params.til
@@ -66,17 +68,17 @@ render((
     <Route component={Layout}>
       <Route
         path="/"
-        component={asyncProps(Issues, fetchIssues)}
+        component={asyncIssuesProps(Issues)}
         onEnter={onEnter}
       />
       <Route
         path="til/:til"
-        component={asyncProps(IssuePage, fetchIssues)}
+        component={asyncIssuesProps(filterIssueProps(Issues))}
         onEnter={onEnter}
       />
       <Route
         path="label/:label"
-        component={asyncProps(LabelIssuesPage, fetchIssues)}
+        component={asyncIssuesProps(filterLabelIssuesProps(Issues))}
         onEnter={onEnter}
       />
     </Route>
