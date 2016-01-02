@@ -10,6 +10,7 @@ import Layout from './Components/Layout';
 import Issue from './Components/Issue';
 import IssueListItem from './Components/IssueListItem';
 
+import staticProps from './HoCs/staticProps';
 import promiseProps from './HoCs/promiseProps';
 import filterProps from './HoCs/filterProps';
 import waitForProps from './HoCs/waitForProps';
@@ -42,6 +43,7 @@ const fetchIssues = () => {
     .then(issues => ({ issues }));
 };
 
+const configProps = staticProps(config);
 const promiseIssuesProps = promiseProps(fetchIssues);
 const waitForIssuesProps = waitForProps(['issues']);
 
@@ -61,13 +63,16 @@ const filterIssueProps = filterProps(props => {
 });
 
 const IssuesPage = _.compose(
+  configProps,
   promiseIssuesProps,
   waitForIssuesProps,
   fade
 )(props => (
   <div>
-    {props.issues.map(issue => (
-      <Issue key={issue.id} {...issue} />
+    <Issue {...props.issues[0]} />
+    <h3>Previously on {props.title}</h3>
+    {props.issues.slice(1).map(issue => (
+      <IssueListItem key={issue.id} {...issue} />
     ))}
   </div>
 ));
