@@ -100,7 +100,10 @@ const history = createHashHistory({
   queryKey: false
 });
 
-const onEnter = () => $('html, body').animate({ scrollTop: 0 }, 'slow');
+const onEnter = (nextState) => {
+  $('html, body').animate({ scrollTop: 0 }, 'slow');
+  ga('send', 'pageview', nextState.location.pathname);
+};
 
 render((
   <Router history={history}>
