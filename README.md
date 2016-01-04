@@ -5,4 +5,4 @@ This is just a static site that pulls down this repo's issues and displays them 
 
 # Forking?
 
-Fork, check out `master`, update `app/config.js` with your info, then run `npm install` and `npm publish`.
+Fork, check out `master`, update `app/config.js` with your info, then run `npm install` and `npm run deploy`.
