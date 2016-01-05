@@ -30,6 +30,8 @@ class Comments extends Component {
   }
 }
 
-export default promiseProps(props => (
+const promiseCommentsProps = promiseProps(props => (
   $.ajax(props.comments_url).then(comments => ({ comments }))
-))(Comments);
+));
+
+export default promiseCommentsProps(Comments);

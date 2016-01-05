@@ -35,11 +35,9 @@ if (localStorage.githubToken) {
   });
 }
 
-const sortIssues = issues => _.sortBy(issues, '-created_at');
-
 const fetchIssues = () => {
   return Q.resolve($.ajax(`https://api.github.com/repos/${config.repo}/issues`))
-    .then(sortIssues)
+    .then(issues => _.sortBy(issues, '-created_at'))
     .then(issues => ({ issues }));
 };
 
@@ -100,7 +98,7 @@ const history = createHashHistory({
   queryKey: false
 });
 
-const onEnter = (nextState) => {
+const onEnter = nextState => {
   $('html, body').animate({ scrollTop: 0 }, 'slow');
   ga('send', 'pageview', nextState.location.pathname);
 };
