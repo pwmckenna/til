@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import Markdown from './Markdown';
 
-import './Comment.less';
+import { className } from './Comment.less';
 
 class Comment extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class Comment extends Component {
   }
   render() {
     return (
-      <div className="comment">
+      <div className={className}>
         <div className="row">
           <div className="col-sm-2 col-sm-offset-2">
             <div>

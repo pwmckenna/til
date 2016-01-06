@@ -6,7 +6,7 @@ import Twitter from './Twitter';
 
 import slug from '../utils/slug';
 
-import './Title.less';
+import { className } from './Title.less';
 
 class Title extends Component {
   static propTypes = {
@@ -38,7 +38,7 @@ class Title extends Component {
       />
     );
     return (
-      <div className="text-center title">
+      <div className={className + 'text-center'}>
         <MediaQuery query="(min-width: 769px)">
           <h1>
             {anchor}

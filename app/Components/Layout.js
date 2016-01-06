@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-import './Layout.less';
+import { className } from './Layout.less';
 
 class Layout extends Component {
   static propTypes = {
@@ -11,7 +11,7 @@ class Layout extends Component {
   }
   render() {
     return (
-      <div className="layout">
+      <div className={className}>
         <div className="container">
           <Header />
           {this.props.children}
