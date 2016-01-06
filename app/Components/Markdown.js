@@ -1,12 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import marked from 'marked';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css';
 
 import emoji from '../utils/emoji';
 
 import './Markdown.less';
 
 marked.setOptions({
-  highlight: code => hljs.highlightAuto(code).value
+  highlight: (code, language) => {
+    return hljs.highlightAuto(code, [language]).value;
+  }
 });
 const renderer = new marked.Renderer();
 renderer.listitem = function formatTaskList(text) {
