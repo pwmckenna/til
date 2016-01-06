@@ -11,7 +11,7 @@ import staticProps from '../HoCs/staticProps';
 
 import config from '../config';
 
-import './Header.less';
+import { className } from './Header.less';
 
 const pixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
@@ -22,7 +22,7 @@ class Header extends Component {
   }
   render() {
     return (
-      <div className="header">
+      <div className={className}>
         {this.props.img ? <Favicon href={this.props.img} /> : null}
         <Link to="">
           {this.props.img ?

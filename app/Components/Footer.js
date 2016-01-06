@@ -6,7 +6,7 @@ import config from '../config';
 
 import staticProps from '../HoCs/staticProps';
 
-import './Footer.less';
+import { className } from './Footer.less';
 
 class Footer extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class Footer extends Component {
   }
   render() {
     return (
-      <div className="footer text-center">
+      <div className={className + ' text-center'}>
         <h3>
           <img src="vendor/emoji-parser/emoji/evergreen_tree.png" />
           {this.props.name}

@@ -6,7 +6,7 @@ import Timestamp from './Timestamp';
 
 import slug from '../utils/slug';
 
-import './IssueListItem.less';
+import { className } from './IssueListItem.less';
 
 class Issue extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ class Issue extends Component {
   render() {
     const to = `til/${slug(this.props.title)}`;
     return (
-      <div className="issue-list-item">
+      <div className={className}>
         <div className="col-sm-3">
           <Timestamp date={this.props.created_at} />
         </div>

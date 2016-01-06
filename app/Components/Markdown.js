@@ -5,7 +5,7 @@ import 'highlight.js/styles/github.css';
 
 import emoji from '../utils/emoji';
 
-import './Markdown.less';
+import { className } from './Markdown.less';
 
 marked.setOptions({
   highlight: (code, language) => {
@@ -31,7 +31,7 @@ class Markdown extends Component {
   render() {
     return (
       <div
-        className="markdown"
+        className={className}
         dangerouslySetInnerHTML={{
           __html: emoji(marked(this.props.markdown, { renderer }))
         }}
