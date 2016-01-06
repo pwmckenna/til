@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import slug from '../utils/slug';
 
-import './Label.less';
+import { className } from './Label.less';
 
 class Label extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class Label extends Component {
       <Link
         to={`label/${slug(this.props.name)}`}
         key={this.props.name}
-        className="badge label"
+        className={className + ' badge'}
         style={{
           backgroundColor: '#' + this.props.color
         }}

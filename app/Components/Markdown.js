@@ -3,7 +3,7 @@ import marked from 'marked';
 
 import emoji from '../utils/emoji';
 
-import './Markdown.less';
+import { className } from './Markdown.less';
 
 marked.setOptions({
   highlight: code => hljs.highlightAuto(code).value
@@ -27,7 +27,7 @@ class Markdown extends Component {
   render() {
     return (
       <div
-        className="markdown"
+        className={className}
         dangerouslySetInnerHTML={{
           __html: emoji(marked(this.props.markdown, { renderer }))
         }}

@@ -5,7 +5,7 @@ import Comment from './Comment';
 
 import promiseProps from '../HoCs/promiseProps';
 
-import './Comments.less';
+import { className } from './Comments.less';
 
 class Comments extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class Comments extends Component {
   }
   render() {
     return (
-      <div className="comments">
+      <div className={className}>
         {this.props.comments ?
           this.props.comments.map(comment => <Comment key={comment.id} {...comment} />) :
           null

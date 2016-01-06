@@ -7,7 +7,7 @@ import Dot from './Dot';
 import Title from './Title';
 import Timestamp from './Timestamp';
 
-import './Issue.less';
+import { className } from './Issue.less';
 
 class Issue extends Component {
   static propTypes = {
@@ -21,7 +21,7 @@ class Issue extends Component {
   }
   render() {
     return (
-      <div className="issue">
+      <div className={className}>
         <Title title={this.props.title} />
 
         <div className="text-center info">
