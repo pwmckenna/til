@@ -21,6 +21,7 @@ class Header extends Component {
     title: PropTypes.string.isRequired
   }
   render() {
+    document.title = this.props.title;
     return (
       <div className={className}>
         {this.props.img ? <Favicon href={this.props.img} /> : null}
