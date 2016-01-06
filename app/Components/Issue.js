@@ -12,6 +12,7 @@ import { className } from './Issue.less';
 class Issue extends Component {
   static propTypes = {
     body: PropTypes.string.isRequired,
+    comments: PropTypes.number.isRequired,
     comments_url: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     html_url: PropTypes.string.isRequired,
@@ -50,10 +51,17 @@ class Issue extends Component {
           <Markdown markdown={this.props.body} />
         </div>
 
-        <Comments
-          comments_url={this.props.comments_url}
-          html_url={this.props.html_url}
-        />
+        {this.props.comments > 0 ? (
+          <Comments
+            comments_url={this.props.comments_url}
+          />
+        ) : null}
+
+        <div className="text-center">
+          <a href={this.props.html_url}>
+            <i className="fa fa-comment" />
+          </a>
+        </div>
       </div>
     );
   }
