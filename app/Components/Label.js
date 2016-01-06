@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import classnames from 'classnames';
 
 import slug from '../utils/slug';
 
@@ -15,7 +16,7 @@ class Label extends Component {
       <Link
         to={`label/${slug(this.props.name)}`}
         key={this.props.name}
-        className={className + ' badge'}
+        className={classnames(className, 'badge')}
         style={{
           backgroundColor: '#' + this.props.color
         }}

@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "bootstrap": "^3.3.6",
+    "classnames": "^2.2.3",
     "font-awesome": "^4.5.0",
     "highlight.js": "^9.0.0",
     "history": "^1.17.0",

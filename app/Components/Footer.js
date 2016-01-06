@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 
 import Dot from './Dot';
 
@@ -17,7 +18,7 @@ class Footer extends Component {
   }
   render() {
     return (
-      <div className={className + ' text-center'}>
+      <div className={classnames(className, 'text-center')}>
         <h3>
           <img src="vendor/emoji-parser/emoji/evergreen_tree.png" />
           {this.props.name}

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import MediaQuery from 'react-responsive';
+import classnames from 'classnames';
 
 import Twitter from './Twitter';
 
@@ -38,7 +39,7 @@ class Title extends Component {
       />
     );
     return (
-      <div className={className + ' text-center'}>
+      <div className={classnames(className, 'text-center')}>
         <MediaQuery query="(min-width: 769px)">
           <h1>
             {anchor}
