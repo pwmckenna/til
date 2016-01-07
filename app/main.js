@@ -65,15 +65,21 @@ const IssuesPage = _.compose(
   promiseIssuesProps,
   waitForIssuesProps,
   fade
-)(props => (
-  <div>
-    <Issue key={props.issues[0].id} {...props.issues[0]} />
-    <h3>Previously on {props.title}</h3>
-    {props.issues.slice(1).map(issue => (
-      <IssueListItem key={issue.id} {...issue} />
-    ))}
-  </div>
-));
+)(props => {
+  const currentIssue = props.issues[0];
+  const previousIssues = props.issues.slice(1);
+  return (
+    <div>
+      <Issue key={currentIssue.id} {...currentIssue} />
+      {previousIssues.length > 0 ? (
+        <h3>Previously on {props.title}</h3>
+      ) : null}
+      {previousIssues.map(issue => (
+        <IssueListItem key={issue.id} {...issue} />
+      ))}
+    </div>
+  );
+});
 const IssuePage = _.compose(
   promiseIssuesProps,
   waitForIssuesProps,
