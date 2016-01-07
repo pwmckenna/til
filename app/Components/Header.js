@@ -19,7 +19,7 @@ class Header extends Component {
   static propTypes = {
     img: PropTypes.string,
     title: PropTypes.string.isRequired
-  }
+  };
   render() {
     document.title = this.props.title;
     return (

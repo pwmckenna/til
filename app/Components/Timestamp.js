@@ -4,7 +4,7 @@ import moment from 'moment';
 class Timestamp extends Component {
   static propTypes = {
     date: PropTypes.string.isRequired
-  }
+  };
   render() {
     return (
       <span className="text-muted">

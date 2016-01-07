@@ -27,7 +27,7 @@ renderer.listitem = function formatTaskList(text) {
 class Markdown extends Component {
   static propTypes = {
     markdown: PropTypes.string.isRequired
-  }
+  };
   render() {
     return (
       <div

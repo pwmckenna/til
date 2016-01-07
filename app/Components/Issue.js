@@ -19,7 +19,7 @@ class Issue extends Component {
     labels: PropTypes.arrayOf(PropTypes.shape(Label.propTypes)).isRequired,
     title: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired
-  }
+  };
   render() {
     return (
       <div className={className}>

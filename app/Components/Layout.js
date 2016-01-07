@@ -8,7 +8,7 @@ import { className } from './Layout.less';
 class Layout extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired
-  }
+  };
   render() {
     return (
       <div className={className}>

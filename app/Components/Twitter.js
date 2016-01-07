@@ -7,7 +7,7 @@ class Twitter extends Component {
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     className: PropTypes.string
-  }
+  };
   handleShare(e) {
     e.preventDefault();
     tweet(this.props.url, this.props.title);

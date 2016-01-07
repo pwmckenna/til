@@ -22,7 +22,7 @@ class Store {
 
 export default (fetch, propTypes) => Component => (
   class extends ReactComponent {
-    static propTypes = propTypes
+    static propTypes = propTypes;
     constructor() {
       super();
       this.store = new Store();

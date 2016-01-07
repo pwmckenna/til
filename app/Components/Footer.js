@@ -15,7 +15,7 @@ class Footer extends Component {
     repo: PropTypes.string.isRequired,
     twitter: PropTypes.string.isRequired,
     github: PropTypes.string.isRequired
-  }
+  };
   render() {
     return (
       <div className={classnames(className, 'text-center')}>

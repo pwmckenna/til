@@ -14,7 +14,7 @@ class Comment extends Component {
       html_url: PropTypes.string.isRequired,
       login: PropTypes.string.isRequired
     })
-  }
+  };
   render() {
     return (
       <div className={className}>

@@ -10,7 +10,7 @@ import { className } from './Comments.less';
 class Comments extends Component {
   static propTypes = {
     comments: PropTypes.arrayOf(PropTypes.shape(Comment.propTypes))
-  }
+  };
   render() {
     return (
       <div className={className}>

@@ -10,7 +10,7 @@ class Label extends Component {
   static propTypes = {
     color: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
-  }
+  };
   render() {
     return (
       <Link

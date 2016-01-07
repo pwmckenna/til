@@ -6,7 +6,7 @@ import './Fade.less';
 class Fade extends Component {
   static propTypes = {
     children: React.PropTypes.node
-  }
+  };
   render() {
     return (
       <ReactCSSTransitionGroup

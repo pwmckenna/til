@@ -12,10 +12,10 @@ import { className } from './Title.less';
 class Title extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired
-  }
+  };
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }
+  };
   render() {
     const to = `til/${slug(this.props.title)}`;
     const url = window.location.origin + this.context.router.createHref(to);

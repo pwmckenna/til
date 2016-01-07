@@ -3,7 +3,7 @@ import { Component, PropTypes } from 'react';
 class Favicon extends Component {
   static propTypes = {
     href: PropTypes.string.isRequired
-  }
+  };
   componentDidMount() {
     this.renderFavicon();
   }
