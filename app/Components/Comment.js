@@ -19,7 +19,7 @@ class Comment extends Component {
     return (
       <div className={className}>
         <div className="row">
-          <div className="col-sm-2 col-sm-offset-2">
+          <div className="col-sm-2 col-sm-offset-1">
             <div>
               <a href={this.props.user.html_url}>
                 <span className="text-muted">{this.props.user.login}</span>
