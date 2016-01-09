@@ -1,13 +1,5 @@
 {
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "ecmaFeatures": {
-    "classes": true
-  },
-  "rules": {
-    "comma-dangle": [2, "never"],
-    "arrow-parens": [2, "as-needed"]
-  },
+  "extends": "pwmckenna",
   "globals": {
     "ga": true,
     "hljs": true,
