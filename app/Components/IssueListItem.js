@@ -35,7 +35,7 @@ class Issue extends Component {
         </div>
         <div className="col-sm-3">
           {this.props.labels.length ? (
-            <div className="text-center labels pull-right">
+            <div className="pull-right">
               {this.props.labels.map(label => <Label key={label.name} {...label} />)}
             </div>
           ) : null}
