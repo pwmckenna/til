@@ -18,7 +18,7 @@ class Title extends Component {
   };
   render() {
     const to = `til/${slug(this.props.title)}`;
-    const url = window.location.origin + this.context.router.createHref(to);
+    const url = `${window.location.origin}${window.location.pathname}#/${this.context.router.createPath(to)}`;
 
     const anchor = (
       <Link
