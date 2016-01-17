@@ -4,6 +4,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 
 import emoji from '../utils/emoji';
+import shortcode from '../utils/shortcode';
 
 import { className } from './Markdown.less';
 
@@ -33,7 +34,7 @@ class Markdown extends Component {
       <div
         className={className}
         dangerouslySetInnerHTML={{
-          __html: emoji(marked(this.props.markdown, { renderer }))
+          __html: emoji(shortcode(marked(this.props.markdown, { renderer })))
         }}
       />
     );
