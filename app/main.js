@@ -35,11 +35,11 @@ if (localStorage.githubToken) {
   });
 }
 
-const fetchIssues = () => {
-  return Q.resolve($.ajax(`https://api.github.com/repos/${config.repo}/issues`))
+const fetchIssues = () => (
+  Q.resolve($.ajax(`https://api.github.com/repos/${config.repo}/issues`))
     .then(issues => _.sortBy(issues, '-created_at'))
-    .then(issues => ({ issues }));
-};
+    .then(issues => ({ issues }))
+);
 
 const configProps = staticProps(config);
 const promiseIssuesProps = promiseProps(fetchIssues);

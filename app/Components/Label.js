@@ -18,7 +18,7 @@ class Label extends Component {
         key={this.props.name}
         className={classnames(className, 'badge')}
         style={{
-          backgroundColor: '#' + this.props.color
+          backgroundColor: `#${this.props.color}`
         }}
       >
         {this.props.name}

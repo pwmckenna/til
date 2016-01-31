@@ -22,12 +22,16 @@ class Comment extends Component {
           <div className="col-sm-2 col-sm-offset-1">
             <div>
               <a href={this.props.user.html_url}>
-                <span className="text-muted">{this.props.user.login}</span>
+                <span className="text-muted">
+                  {this.props.user.login}
+                </span>
               </a>
             </div>
             <div>
               <a href={this.props.html_url}>
-                <span className="text-muted">{moment(this.props.created_at).format('MMMM Do YYYY')}</span>
+                <span className="text-muted">
+                  {moment(this.props.created_at).format('MMMM Do YYYY')}
+                </span>
               </a>
             </div>
           </div>

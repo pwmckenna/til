@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
@@ -9,19 +10,25 @@ import shortcode from '../utils/shortcode';
 import { className } from './Markdown.less';
 
 marked.setOptions({
-  highlight: (code, language) => {
-    return hljs.highlightAuto(code, [language]).value;
-  }
+  highlight: (code, language) => hljs.highlightAuto(code, [language]).value
 });
+const checkbox = checked => renderToStaticMarkup(
+  <input
+    type="checkbox"
+    className="task-list-item-checkbox"
+    disabled
+    checked={checked}
+  />
+);
 const renderer = new marked.Renderer();
 renderer.listitem = function formatTaskList(text) {
   if (/^\s*\[[x ]\]\s*/.test(text)) {
     const formatted = text
-      .replace(/^\s*\[ \]\s*/, '<input type="checkbox" class="task-list-item-checkbox" disabled> ')
-      .replace(/^\s*\[x\]\s*/, '<input type="checkbox" class="task-list-item-checkbox" disabled checked> ');
-    return '<li style="list-style: none">' + formatted + '</li>';
+      .replace(/^\s*\[ \]\s*/, checkbox(false))
+      .replace(/^\s*\[x\]\s*/, checkbox(true));
+    return `<li style="list-style: none">${formatted}</li>`;
   }
-  return '<li>' + text + '</li>';
+  return `<li>${text}</li>`;
 };
 
 

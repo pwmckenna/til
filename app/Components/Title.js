@@ -18,7 +18,8 @@ class Title extends Component {
   };
   render() {
     const to = `til/${slug(this.props.title)}`;
-    const url = `${window.location.origin}${window.location.pathname}#/${this.context.router.createPath(to)}`;
+    const pathname = this.context.router.createPath(to);
+    const url = `${window.location.origin}${window.location.pathname}#/${pathname}`;
 
     const anchor = (
       <Link

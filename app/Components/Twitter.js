@@ -8,16 +8,16 @@ class Twitter extends Component {
     url: PropTypes.string.isRequired,
     className: PropTypes.string
   };
-  handleShare(e) {
+  handleShare = e => {
     e.preventDefault();
     tweet(this.props.url, this.props.title);
-  }
+  };
   render() {
     return (
       <a
         target="_blank"
         className={this.props.className}
-        onClick={this.handleShare.bind(this)}
+        onClick={this.handleShare}
         href={`https://twitter.com/share?url=${this.props.url}`}
       >
         <i className="fa fa-twitter" />
