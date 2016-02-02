@@ -1,9 +1,2 @@
 node_modules
-build/*.js
-build/*.eot
-build/*.woff
-build/*.woff2
-build/*.svg
-build/*.ttf
-build/bundle.js
-build/bundle.js.map
+build
