@@ -53,7 +53,7 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
-    "clean": "rimraf build/bundle.js build/bundle.js.map",
+    "clean": "rimraf build",
     "lint": "eslint app --ext .js --ext .jsx",
     "dev": "node server",
     "build": "npm run clean && NODE_ENV=production webpack -p --config webpack.production.config.js --progress",
