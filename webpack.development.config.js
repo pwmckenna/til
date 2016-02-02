@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -9,6 +10,9 @@ module.exports = {
   ],
   output: require('./webpack.output'),
   plugins: [
+    new CopyWebpackPlugin([{
+      from: 'public'
+    }]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
